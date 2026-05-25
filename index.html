@@ -1,0 +1,2293 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Karen y Jonathan · 17.10.2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garant:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400&family=Great+Vibes&display=swap" rel="stylesheet">
+  <style>
+    /* ─── Reset ───────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    /* ─── Tokens ──────────────────────────────── */
+    :root {
+      --cream:        #FAF8F0;   /* buttercream ivory */
+      --parchment:    #F5EEE3;   /* warm parchment */
+      --white:        #FEFCF8;
+      --terra:        #C4714F;   /* coral / warm orange */
+      --terra-light:  #E0956C;   /* apricot */
+      --terra-pale:   #F7E0D0;
+      --sage:         #8BA888;   /* sage / olive green */
+      --sage-pale:    #D8E8D4;
+      --blush:        #C98A80;   /* dusty rose */
+      --blush-pale:   #F0DDD8;
+      --peach:        #E8B898;   /* warm peach */
+      --peach-pale:   #FAE8D8;
+      --buttercream:  #F5E8CC;   /* warm ivory / gold */
+      --brown:        #3A2A1C;
+      --brown-mid:    #6B4F38;
+      --brown-muted:  #A08870;
+      --border:       #E0D4C0;
+      --border-light: #EDE8DE;
+      --shadow:       0 4px 28px rgba(44,36,22,0.07);
+      --shadow-lg:    0 10px 48px rgba(44,36,22,0.13);
+    }
+
+    /* ─── Base ────────────────────────────────── */
+    body {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      background: var(--cream);
+      color: var(--brown);
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    h1, h2, h3, h4 {
+      font-family: 'Cormorant Garant', serif;
+      font-weight: 300;
+      line-height: 1.15;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { font-family: 'Jost', sans-serif; }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    /* ─── Ornament ────────────────────────────── */
+    .ornament {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 18px;
+    }
+    .ornament::before, .ornament::after {
+      content: '';
+      width: 64px;
+      height: 1px;
+      background: var(--terra);
+      opacity: 0.35;
+    }
+    .diamond {
+      width: 5px; height: 5px;
+      background: var(--terra);
+      transform: rotate(45deg);
+      opacity: 0.6;
+      flex-shrink: 0;
+    }
+
+    /* ─── Section header ──────────────────────── */
+    .section-header { text-align: center; margin-bottom: 60px; }
+    .eyebrow {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 0.72rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--terra);
+      margin-bottom: 10px;
+    }
+    .section-header h2 { font-size: clamp(1.9rem, 3.5vw, 2.7rem); }
+
+    /* ─── Reveal ──────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.75s ease, transform 0.75s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ═══════════════════════════════════════════
+       NAV
+    ═══════════════════════════════════════════ */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 48px;
+      transition: background 0.4s, border-color 0.4s, padding 0.35s;
+      border-bottom: 1px solid transparent;
+    }
+    .nav.scrolled {
+      background: rgba(250,247,242,0.95);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom-color: var(--border-light);
+      padding: 13px 48px;
+    }
+    .nav-left {
+      font-family: 'Cormorant Garant', serif;
+      font-weight: 300;
+      font-size: 1.15rem;
+      letter-spacing: 0.18em;
+      color: var(--cream);
+      transition: color 0.4s;
+    }
+    .nav.scrolled .nav-left { color: var(--brown); }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 40px;
+    }
+    .nav-links a {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(250,247,242,0.78);
+      transition: opacity 0.2s;
+      cursor: pointer;
+    }
+    .nav.scrolled .nav-links a { color: var(--brown-mid); }
+    .nav-links a:hover { opacity: 0.5; }
+
+    /* Language switcher */
+    .lang-switch {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .lang-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 0.68rem;
+      font-weight: 300;
+      letter-spacing: 0.12em;
+      padding: 3px 6px;
+      color: rgba(250,247,242,0.5);
+      transition: color 0.2s;
+    }
+    .lang-btn.active { color: var(--cream); font-weight: 400; }
+    .lang-btn:hover:not(.active) { color: rgba(250,247,242,0.85); }
+    .nav.scrolled .lang-btn { color: var(--brown-muted); }
+    .nav.scrolled .lang-btn.active { color: var(--terra); }
+    .lang-sep {
+      color: rgba(250,247,242,0.22);
+      font-size: 0.6rem;
+      pointer-events: none;
+    }
+    .nav.scrolled .lang-sep { color: var(--border); }
+
+    /* ── Hamburger Button ──────────────────── */
+    .burger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 6px;
+      z-index: 1001;
+    }
+    .burger-line {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: var(--cream);
+      border-radius: 2px;
+      transition: transform 0.3s ease, opacity 0.2s ease, background 0.3s;
+      transform-origin: center;
+    }
+    .nav.scrolled .burger-line { background: var(--brown); }
+    .burger.is-open .burger-line:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .burger.is-open .burger-line:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .burger.is-open .burger-line:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    /* ── Mobile Nav Overlay ────────────────── */
+    .nav-mobile-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(250, 246, 240, 0.97);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      z-index: 990;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 36px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .nav-mobile-overlay.is-open {
+      display: flex;
+      opacity: 1;
+    }
+    .nav-mobile-overlay a {
+      font-family: 'Cormorant Garant', serif;
+      font-size: 1.7rem;
+      font-weight: 300;
+      font-style: italic;
+      letter-spacing: 0.18em;
+      color: var(--brown-mid);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-mobile-overlay a:hover { color: var(--terra); }
+    .nav-mobile-overlay .mob-lang {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      margin-top: 8px;
+    }
+    .nav-mobile-overlay .mob-lang .lang-btn {
+      color: var(--brown-muted);
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+    }
+    .nav-mobile-overlay .mob-lang .lang-btn.active { color: var(--terra); font-weight: 600; }
+    .nav-mobile-overlay .mob-lang .lang-sep { color: var(--border); }
+
+    /* ═══════════════════════════════════════════
+       HERO
+    ═══════════════════════════════════════════ */
+    .hero {
+      position: relative;
+      height: 72vh;
+      min-height: 520px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background:
+        linear-gradient(180deg, rgba(15,8,2,0.18) 0%, rgba(15,8,2,0.5) 100%),
+        url('images/hero.jpg') center 30% / cover no-repeat;
+      color: var(--cream);
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(160,80,20,0.07);
+      pointer-events: none;
+    }
+    .hero-content { position: relative; z-index: 2; }
+
+    .hero-eyebrow {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: clamp(0.82rem, 1.8vw, 1rem);
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: rgba(250,240,220,0.95);
+      margin-bottom: 18px;
+      text-shadow: 0 1px 12px rgba(10,4,0,0.5);
+    }
+    .hero-title {
+      font-family: 'Great Vibes', cursive;
+      font-weight: 400;
+      font-size: clamp(3.6rem, 9vw, 8rem);
+      letter-spacing: 0.01em;
+      color: #FAF7F2;
+      text-shadow: 0 2px 40px rgba(10,4,0,0.35);
+      line-height: 1.1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+    }
+    .hero-name {
+      display: block;
+    }
+    .hero-connector {
+      font-family: 'Cormorant Garant', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(1rem, 2.5vw, 1.6rem);
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: rgba(250,240,220,0.7);
+      margin: -4px 0;
+    }
+    .hero-sep {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin: 22px auto;
+    }
+    .hero-sep::before, .hero-sep::after {
+      content: '';
+      width: 44px;
+      height: 1px;
+      background: rgba(250,240,220,0.38);
+    }
+    .hero-sep-d {
+      width: 4px; height: 4px;
+      background: rgba(250,240,220,0.6);
+      transform: rotate(45deg);
+    }
+    .hero-location {
+      font-size: clamp(0.82rem, 1.8vw, 1rem);
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(250,240,220,0.95);
+      text-shadow: 0 1px 12px rgba(10,4,0,0.5);
+    }
+    .hero-cta {
+      display: inline-block;
+      margin-top: 44px;
+      padding: 13px 40px;
+      border: 1px solid rgba(250,240,220,0.42);
+      font-size: 0.7rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--cream);
+      transition: background 0.3s, border-color 0.3s;
+      cursor: pointer;
+    }
+    .hero-cta:hover {
+      background: rgba(250,240,220,0.1);
+      border-color: rgba(250,240,220,0.72);
+    }
+    .hero-scroll {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      z-index: 2;
+    }
+    .hero-scroll span {
+      font-size: 0.6rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(250,240,220,0.38);
+    }
+    .hero-scroll-line {
+      width: 1px;
+      height: 44px;
+      background: linear-gradient(to bottom, rgba(250,240,220,0.5), transparent);
+      animation: scrollAnim 2.4s ease-in-out infinite;
+    }
+    @keyframes scrollAnim {
+      0%   { transform: scaleY(0); transform-origin: top; opacity: 0; }
+      40%  { transform: scaleY(1); transform-origin: top; opacity: 1; }
+      80%  { transform: scaleY(0); transform-origin: bottom; opacity: 0; }
+      100% { transform: scaleY(0); transform-origin: bottom; opacity: 0; }
+    }
+
+    /* ═══════════════════════════════════════════
+       SCHEDULE & RSVP
+    ═══════════════════════════════════════════ */
+    .schedule-section {
+      padding: 108px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    /* background.png watercolor texture */
+    .schedule-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('images/background.png') center / cover no-repeat;
+      opacity: 0.14;
+      pointer-events: none;
+    }
+    .schedule-section::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--cream);
+      opacity: 0.78;
+      pointer-events: none;
+    }
+    .schedule-section .container { position: relative; z-index: 1; }
+
+    /* Tabs */
+    .schedule-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 48px;
+      border: none;
+      width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .stab-btn {
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      padding: 8px 4px 10px;
+      font-size: 0.7rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--brown-muted);
+      cursor: pointer;
+      transition: color 0.2s, border-color 0.2s;
+      position: relative;
+    }
+    .stab-btn + .stab-btn { border-left: none; }
+    .stab-btn.active {
+      background: none;
+      color: var(--terra);
+      border-bottom-color: var(--terra);
+    }
+    .stab-btn:hover:not(.active) { color: var(--brown); }
+
+    .tab-pane { display: none; }
+    .tab-pane.active { display: block; }
+
+    .schedule-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    /* Timeline card */
+    .card {
+      background: var(--white);
+      border: 1px solid var(--border-light);
+      padding: 48px 44px;
+      box-shadow: var(--shadow);
+      border-radius: 16px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='250'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.88' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='250' height='250' filter='url(%23n)' opacity='0.038'/%3E%3C/svg%3E");
+      background-size: 250px 250px;
+    }
+    .card-title {
+      font-size: 1.55rem;
+      color: var(--brown);
+      margin-bottom: 32px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    /* Main wedding timeline */
+    .timeline { position: relative; padding-left: 88px; }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 55px;
+      top: 10px; bottom: 10px;
+      width: 1px;
+      background: var(--border);
+    }
+    .timeline-item {
+      position: relative;
+      margin-bottom: 34px;
+    }
+    .timeline-item:last-child { margin-bottom: 0; }
+    .t-time {
+      position: absolute;
+      left: -88px;
+      top: 0;
+      width: 48px;
+      text-align: right;
+      font-family: 'Cormorant Garant', serif;
+      font-size: 1.2rem;
+      font-weight: 300;
+      color: var(--terra);
+      line-height: 1.3;
+    }
+    .t-dot {
+      position: absolute;
+      left: -37px;
+      top: 0.35em;
+      width: 9px; height: 9px;
+      border-radius: 50%;
+      background: var(--cream);
+      border: 1.5px solid var(--terra);
+      z-index: 1;
+    }
+    .timeline-item:first-child .t-dot { background: var(--terra); }
+    .t-body h4 {
+      font-family: 'Cormorant Garant', serif;
+      font-size: 1.05rem;
+      font-weight: 400;
+      margin-bottom: 1px;
+    }
+    .t-body p { font-size: 0.82rem; color: var(--brown-muted); }
+
+    /* Pre-wedding days */
+    .prewed-intro-text {
+      font-size: 0.88rem;
+      color: var(--brown-muted);
+      line-height: 1.65;
+      margin-bottom: 28px;
+      padding: 16px 18px;
+      background: var(--terra-pale);
+      border-left: 2px solid var(--terra);
+    }
+    .prewed-days { display: flex; flex-direction: column; gap: 0; }
+    .prewed-day {
+      display: grid;
+      grid-template-columns: 88px 1fr;
+      gap: 0;
+      padding: 22px 0;
+      border-bottom: 1px solid var(--border-light);
+    }
+    .prewed-day:last-child { border-bottom: none; padding-bottom: 0; }
+    .prewed-day-label {
+      padding-right: 20px;
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      padding-top: 2px;
+    }
+    .prewed-weekday {
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--terra);
+      display: block;
+      margin-bottom: 3px;
+    }
+    .prewed-date {
+      font-family: 'Cormorant Garant', serif;
+      font-size: 0.95rem;
+      color: var(--brown-mid);
+      display: block;
+    }
+    .prewed-day-body { padding-left: 20px; padding-top: 2px; }
+    .prewed-day-body h4 {
+      font-family: 'Cormorant Garant', serif;
+      font-size: 1.05rem;
+      font-weight: 400;
+      margin-bottom: 4px;
+    }
+    .prewed-day-body p { font-size: 0.83rem; color: var(--brown-muted); line-height: 1.6; }
+
+    /* RSVP Card */
+    .rsvp-card {
+      background: var(--parchment);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='250'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.88' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='250' height='250' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+      background-size: 250px 250px;
+    }
+
+    .rsvp-note {
+      font-size: 0.8rem;
+      color: var(--brown-muted);
+      letter-spacing: 0.05em;
+      margin-bottom: 32px;
+    }
+
+    .form-group { margin-bottom: 24px; }
+    .form-group label {
+      display: block;
+      font-size: 0.7rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--brown-mid);
+      margin-bottom: 9px;
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid var(--border);
+      padding: 8px 0 10px;
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 0.95rem;
+      color: var(--brown);
+      outline: none;
+      transition: border-color 0.2s;
+      -webkit-appearance: none;
+      border-radius: 0;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus { border-bottom-color: var(--terra); }
+    .form-group textarea { resize: none; min-height: 68px; }
+
+    /* Guest list */
+    .guest-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 4px; }
+    .guest-entry {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+    .guest-entry input {
+      flex: 1;
+      border-bottom: 1px solid var(--border);
+      background: transparent;
+      padding: 7px 0 9px;
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 0.92rem;
+      color: var(--brown);
+      outline: none;
+      border-top: none; border-left: none; border-right: none;
+      transition: border-color 0.2s;
+      border-radius: 0;
+    }
+    .guest-entry input:focus { border-bottom-color: var(--terra); }
+    .remove-btn {
+      background: none;
+      border: 1px solid var(--border);
+      width: 26px; height: 26px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      color: var(--brown-muted);
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: border-color 0.2s, color 0.2s;
+      line-height: 1;
+    }
+    .remove-btn:hover { border-color: var(--terra); color: var(--terra); }
+    .add-guest-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: none;
+      border: 1px dashed var(--border);
+      width: 100%;
+      padding: 10px 14px;
+      margin-top: 8px;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--brown-muted);
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+      text-align: left;
+    }
+    .add-guest-btn:hover { border-color: var(--terra); color: var(--terra); }
+    .add-plus {
+      font-size: 1.1rem;
+      line-height: 1;
+      color: var(--terra);
+    }
+
+    /* Attendance */
+    .attendance-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 4px;
+    }
+    .attend-opt input[type="radio"] {
+      position: absolute;
+      opacity: 0;
+      width: 0; height: 0;
+    }
+    .attend-opt label {
+      display: block;
+      text-align: center;
+      padding: 11px 6px;
+      border: 1px solid var(--border);
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+      color: var(--brown-muted);
+      user-select: none;
+    }
+    .attend-opt input:checked + label {
+      border-color: var(--terra);
+      color: var(--terra);
+      background: rgba(184,112,72,0.05);
+    }
+    .attend-opt label:hover { border-color: var(--terra-light); color: var(--terra); }
+
+    .submit-btn {
+      width: 100%;
+      margin-top: 28px;
+      padding: 15px 32px;
+      background: var(--terra);
+      color: var(--cream);
+      border: none;
+      font-weight: 300;
+      font-size: 0.72rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.25s;
+    }
+    .submit-btn:hover { background: var(--brown-mid); }
+    .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 40px 24px;
+    }
+    .form-success p {
+      font-family: 'Cormorant Garant', serif;
+      font-size: 1.6rem;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--terra);
+    }
+    .form-success small {
+      display: block;
+      margin-top: 10px;
+      font-size: 0.85rem;
+      color: var(--brown-muted);
+    }
+
+    /* ═══════════════════════════════════════════
+       TRAVEL
+    ═══════════════════════════════════════════ */
+    .travel-section {
+      padding: 108px 0;
+      background: var(--parchment);
+      position: relative;
+    }
+    .travel-section::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: repeating-linear-gradient(
+        90deg,
+        var(--terra) 0px, var(--terra) 10px,
+        transparent 10px, transparent 14px,
+        var(--sage) 14px, var(--sage) 24px,
+        transparent 24px, transparent 28px
+      );
+      opacity: 0.22;
+    }
+    .travel-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: start;
+    }
+    .travel-info h3 { font-size: 1.5rem; margin-bottom: 28px; }
+    .travel-item {
+      display: flex;
+      gap: 18px;
+      margin-bottom: 26px;
+      align-items: flex-start;
+    }
+    .travel-icon {
+      width: 26px; height: 26px;
+      flex-shrink: 0;
+      color: var(--terra);
+      margin-top: 3px;
+    }
+    .travel-item h4 {
+      font-family: 'Cormorant Garant', serif;
+      font-size: 1.05rem;
+      font-weight: 400;
+      margin-bottom: 3px;
+    }
+    .travel-item p { font-size: 0.86rem; color: var(--brown-muted); line-height: 1.65; }
+
+    /* Single accommodation card with photo */
+    .accomm-col h3 { font-size: 1.5rem; margin-bottom: 28px; }
+    .accomm-card {
+      background: var(--white);
+      border: 1px solid var(--border-light);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transition: box-shadow 0.3s, transform 0.3s;
+    }
+    .accomm-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); }
+    .accomm-img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+    }
+    .accomm-body { padding: 28px; }
+    .accomm-badge {
+      display: inline-block;
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--terra);
+      border: 1px solid rgba(184,112,72,0.35);
+      padding: 3px 10px;
+      margin-bottom: 12px;
+    }
+    .accomm-card h4 {
+      font-family: 'Cormorant Garant', serif;
+      font-size: 1.3rem;
+      font-weight: 400;
+      margin-bottom: 8px;
+    }
+    .accomm-card p { font-size: 0.86rem; color: var(--brown-muted); line-height: 1.6; }
+    .accomm-dist {
+      margin-top: 14px;
+      font-size: 0.72rem;
+      color: var(--sage);
+      letter-spacing: 0.1em;
+    }
+
+    /* ═══════════════════════════════════════════
+       ECUADOR
+    ═══════════════════════════════════════════ */
+    .ecuador-section { padding: 108px 0; background: var(--cream); }
+
+    .ecuador-intro {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 72px;
+    }
+    .ecuador-intro p {
+      font-family: 'Cormorant Garant', serif;
+      font-size: 1.2rem;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--brown-mid);
+      line-height: 1.8;
+    }
+
+    /* 4-photo grid: 2x2 */
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .photo-card {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 2/3;
+    }
+    .photo-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);
+      display: block;
+    }
+    .photo-card:hover img { transform: scale(1.06); }
+    .photo-overlay {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 36px 16px 18px;
+      background: linear-gradient(to top, rgba(28,16,6,0.72) 0%, transparent 100%);
+    }
+    .photo-overlay h4 {
+      font-family: 'Cormorant Garant', serif;
+      font-size: 1.25rem;
+      font-weight: 300;
+      color: #FAF7F2;
+      margin-bottom: 2px;
+    }
+    .photo-overlay p {
+      font-size: 0.72rem;
+      color: rgba(250,240,218,0.65);
+      letter-spacing: 0.07em;
+    }
+
+    .highlights-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .highlight {
+      padding: 28px 26px;
+      background: var(--parchment);
+      border-left: 2px solid var(--terra);
+    }
+    .highlight h4 {
+      font-family: 'Cormorant Garant', serif;
+      font-size: 1.12rem;
+      font-weight: 400;
+      margin-bottom: 8px;
+    }
+    .highlight p { font-size: 0.87rem; color: var(--brown-muted); line-height: 1.65; }
+
+    /* ═══════════════════════════════════════════
+       FOOTER
+    ═══════════════════════════════════════════ */
+    footer {
+      padding: 64px 32px;
+      text-align: center;
+      background: var(--brown);
+      position: relative;
+    }
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: repeating-linear-gradient(
+        90deg,
+        var(--terra-light) 0px, var(--terra-light) 10px,
+        transparent 10px, transparent 14px,
+        var(--sage) 14px, var(--sage) 24px,
+        transparent 24px, transparent 28px
+      );
+      opacity: 0.32;
+    }
+    .footer-names {
+      font-family: 'Cormorant Garant', serif;
+      font-size: 2rem;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--cream);
+      margin-bottom: 10px;
+    }
+    .footer-info {
+      font-size: 0.72rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: rgba(250,240,218,0.35);
+    }
+
+    /* ═══════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════ */
+
+    /* Tablet landscape */
+    /* Tablet landscape */
+    @media (max-width: 1020px) {
+      .photo-grid { grid-template-columns: repeat(2, 1fr); }
+      .photo-card { aspect-ratio: 3/4; }
+    }
+
+    /* Tablet portrait */
+    @media (max-width: 960px) {
+      .schedule-grid,
+      .travel-grid { grid-template-columns: 1fr; }
+      .highlights-grid { grid-template-columns: 1fr; }
+      .schedule-section,
+      .travel-section,
+      .ecuador-section { padding: 80px 0; }
+    }
+
+    /* Mobile */
+    @media (max-width: 640px) {
+      /* Hero: kleiner, nicht volle Viewport-Höhe */
+      .hero { height: 72vh; min-height: 440px; }
+      .hero-eyebrow { margin-bottom: 10px; font-size: 0.72rem; letter-spacing: 0.22em; }
+      .hero-title { font-size: clamp(2.8rem, 11vw, 3.8rem); }
+      .hero-connector { font-size: 0.82rem; letter-spacing: 0.28em; }
+      .hero-sep { margin: 12px auto; }
+      .hero-cta { margin-top: 28px; padding: 14px 36px; min-height: 48px; font-size: 0.68rem; }
+      .hero-scroll { bottom: 24px; }
+
+      /* Layout */
+      .container { padding: 0 18px; }
+      .nav, .nav.scrolled { padding: 12px 18px; }
+      .nav-links { display: none; }
+      .burger { display: flex; }
+      .lang-switch { display: none; } /* im Mobile-Overlay stattdessen */
+
+      /* Sections */
+      .schedule-section,
+      .travel-section,
+      .ecuador-section { padding: 52px 0; }
+      .section-header { margin-bottom: 32px; }
+      .section-header h2 { font-size: clamp(1.6rem, 6vw, 2.2rem); }
+
+      /* Details section */
+      .details-section { padding: 44px 0 40px; }
+
+      /* Cards */
+      .card { padding: 24px 18px; }
+      .card-title { font-size: 1.1rem; margin-bottom: 20px; }
+
+      /* Timeline */
+      .timeline { padding-left: 76px; }
+      .timeline::before { left: 44px; }
+      .t-time { left: -76px; width: 38px; font-size: 1rem; }
+      .t-dot { left: -28px; }
+      .t-title { font-size: 1rem; }
+      .t-body { font-size: 0.82rem; }
+
+      /* Pre-wedding days */
+      .prewed-day { grid-template-columns: 72px 1fr; }
+      .prewed-day-label { padding-right: 14px; }
+      .prewed-weekday { font-size: 0.6rem; }
+      .prewed-date { font-size: 0.85rem; }
+
+      /* Tabs */
+      .schedule-tabs { width: 100%; }
+      .stab-btn { flex: 1; padding: 12px 10px; font-size: 0.65rem; min-height: 44px; }
+
+      /* Photos */
+      .photo-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+      .photo-card { aspect-ratio: 3/4; }
+
+      /* RSVP */
+      .rsvp-card { padding: 24px 18px; }
+      .attendance-grid { gap: 8px; }
+      .attend-opt label { padding: 12px 4px; font-size: 0.68rem; min-height: 44px; }
+      .submit-btn { width: 100%; padding: 15px; font-size: 0.72rem; min-height: 48px; }
+      .form-group { margin-bottom: 18px; }
+
+      /* Travel */
+      .travel-grid { gap: 32px; }
+      .travel-info h3,
+      .accomm-col h3 { margin-bottom: 16px; }
+      .accomm-card { flex-direction: column; }
+
+      /* Highlights */
+      .highlight { padding: 20px 16px; }
+
+      /* Dresscode */
+      .dresscode-palette { padding: 24px 16px; gap: 16px; }
+      .palette-note { font-size: 0.82rem; }
+
+      /* Footer */
+      footer { padding: 44px 18px; }
+      .footer-names { font-size: 1.5rem; }
+    }
+
+    /* Very small phones */
+    @media (max-width: 390px) {
+      .hero { height: 70vh; min-height: 420px; }
+      .hero-title { font-size: clamp(2.4rem, 12vw, 3rem); }
+      .photo-grid { grid-template-columns: 1fr; }
+      .photo-card { aspect-ratio: 4/3; }
+      .prewed-day { grid-template-columns: 1fr; gap: 6px; }
+      .prewed-day-label {
+        border-right: none;
+        border-bottom: 1px solid var(--border-light);
+        padding-right: 0;
+        padding-bottom: 6px;
+        flex-direction: row;
+        gap: 8px;
+        align-items: center;
+      }
+      .nav-left { font-size: 1rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .hero-scroll-line { animation: none; }
+      .photo-card:hover img { transform: none; }
+      .accomm-card:hover { transform: none; }
+    }
+
+    /* ── Alpaka Hero ────────────────────────────── */
+    .alpaca-hero {
+      position: absolute;
+      bottom: 0;
+      width: clamp(80px, 11vw, 150px);
+      height: auto;
+      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));
+      pointer-events: none;
+      z-index: 5;
+    }
+    .alpaca-hero-l { left: 4%; transform: rotate(-5deg); }
+    .alpaca-hero-r { right: 4%; transform: rotate(4deg) scaleX(-1); }
+    @media (max-width: 640px) {
+      .alpaca-hero { width: clamp(60px, 16vw, 100px); }
+      .alpaca-hero-l { left: 2%; }
+      .alpaca-hero-r { right: 2%; }
+    }
+
+    /* ═══════════════════════════════════════════
+       FLORAL HERO DECORATIONS
+    ═══════════════════════════════════════════ */
+    .hero-floral {
+      position: absolute;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.55;
+    }
+    .hero-floral-tl { top: 0; left: 0; width: clamp(160px,22vw,280px); }
+    .hero-floral-tr { top: 0; right: 0; width: clamp(160px,22vw,280px); transform: scaleX(-1); }
+    .hero-floral-bl { bottom: 0; left: 0; width: clamp(120px,16vw,200px); transform: scaleY(-1); opacity: 0.38; }
+    .hero-floral-br { bottom: 0; right: 0; width: clamp(120px,16vw,200px); transform: scale(-1,-1); opacity: 0.38; }
+
+    /* ═══════════════════════════════════════════
+       DETAILS SECTION (tiles + dresscode)
+    ═══════════════════════════════════════════ */
+    .details-section {
+      padding: 60px 0 56px;
+      background: var(--cream);
+      position: relative;
+      overflow: hidden;
+    }
+    .details-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('images/background.png') center / cover no-repeat;
+      opacity: 0.09;
+      pointer-events: none;
+    }
+    .details-section .container { position: relative; z-index: 1; }
+
+    /* Info tiles */
+    .detail-tiles {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+    .detail-tile {
+      padding: 0;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      box-shadow: none;
+      transition: transform 0.3s;
+      overflow: hidden;
+      position: relative;
+      min-height: 180px;
+      border-radius: 0;
+    }
+    .detail-tile::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      mix-blend-mode: multiply;
+    }
+    .tile-1::before { background-image: url('images/pastelkarte1.png'); }
+    .tile-2::before { background-image: url('images/pastelkarte2.png'); }
+    .tile-3::before { background-image: url('images/pastelkarte3.png'); }
+    .tile-4::before { background-image: url('images/pastelkarte4.png'); }
+    .detail-tile:hover { }
+    .tile-inner {
+      position: relative;
+      z-index: 1;
+      padding: 16px 16px 28px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      width: 100%;
+      height: 100%;
+    }
+    .tile-label {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 0.78rem;
+      color: var(--terra);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+    .tile-divider {
+      width: 24px;
+      height: 1px;
+      background: var(--blush);
+      opacity: 0.6;
+      margin: 2px 0;
+    }
+    .tile-value {
+      font-family: 'Cormorant Garant', serif;
+      font-size: 1.3rem;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--terra);
+      line-height: 1.3;
+      text-align: center;
+    }
+
+    /* Dresscode palette */
+    .dresscode-palette {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      padding: 32px 40px;
+      background: transparent;
+      border-top: 1px solid var(--border-light);
+      border-bottom: 1px solid var(--border-light);
+      text-align: center;
+    }
+    .palette-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--terra);
+    }
+    .palette-note {
+      font-size: 0.9rem;
+      color: var(--brown-muted);
+      font-style: italic;
+      line-height: 1.6;
+      max-width: 520px;
+    }
+    .palette-swatches {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .swatch { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+    .swatch-circle {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      border: 2px solid rgba(255,255,255,0.85);
+      box-shadow: 0 2px 10px rgba(44,36,22,0.13);
+      transition: transform 0.2s;
+    }
+    .swatch:hover .swatch-circle { transform: scale(1.12); }
+    .swatch-name {
+      font-size: 0.64rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--brown-muted);
+    }
+
+    /* ═══════════════════════════════════════════
+       ALPACA DECORATION
+    ═══════════════════════════════════════════ */
+    .alpaca-deco {
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+      padding-right: 8px;
+      opacity: 0.7;
+    }
+    .alpaca-deco svg { width: 52px; height: auto; }
+
+    /* ═══════════════════════════════════════════
+       DETAIL TILES RESPONSIVE
+    ═══════════════════════════════════════════ */
+    @media (max-width: 800px) {
+      .detail-tiles { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+      .dresscode-palette { gap: 18px; padding: 20px 20px; }
+      .palette-note { white-space: normal; text-align: center; }
+    }
+    @media (max-width: 480px) {
+      .detail-tiles { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+      .detail-tile { min-height: 140px; }
+      .tile-inner { padding: 16px 10px; gap: 4px; }
+      .tile-label { font-size: 0.6rem; letter-spacing: 0.16em; }
+      .tile-value { font-size: 0.92rem; }
+      .tile-divider { width: 18px; }
+      .palette-swatches { gap: 10px; }
+      .swatch-circle { width: 34px; height: 34px; }
+      .swatch-name { font-size: 0.58rem; }
+      .hero-floral-bl, .hero-floral-br { display: none; }
+      .detail-tiles { margin-bottom: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ─────────────────────────────────── -->
+  <nav class="nav" id="mainNav" aria-label="Navigation">
+    <div class="nav-left" aria-hidden="true">K &amp; J</div>
+    <ul class="nav-links">
+      <li><a href="#schedule" data-i18n="nav.schedule">Programm</a></li>
+      <li><a href="#travel" data-i18n="nav.travel">Anreise</a></li>
+      <li><a href="#ecuador" data-i18n="nav.ecuador">Ecuador</a></li>
+      <li><a href="#rsvp" data-i18n="nav.rsvp">RSVP</a></li>
+    </ul>
+    <div class="lang-switch" role="group" aria-label="Sprache">
+      <button class="lang-btn active" data-lang="de">DE</button>
+      <span class="lang-sep" aria-hidden="true">|</span>
+      <button class="lang-btn" data-lang="en">EN</button>
+      <span class="lang-sep" aria-hidden="true">|</span>
+      <button class="lang-btn" data-lang="es">ES</button>
+    </div>
+    <button class="burger" id="burgerBtn" aria-label="Menü öffnen" aria-expanded="false">
+      <span class="burger-line"></span>
+      <span class="burger-line"></span>
+      <span class="burger-line"></span>
+    </button>
+  </nav>
+
+  <!-- ── MOBILE NAV OVERLAY ───────────────────── -->
+  <div class="nav-mobile-overlay" id="mobileMenu" role="dialog" aria-label="Navigation">
+    <a href="#schedule" class="mob-nav-link" data-i18n="nav.schedule">Programm</a>
+    <a href="#travel"   class="mob-nav-link" data-i18n="nav.travel">Anreise</a>
+    <a href="#ecuador"  class="mob-nav-link" data-i18n="nav.ecuador">Ecuador</a>
+    <a href="#rsvp"     class="mob-nav-link" data-i18n="nav.rsvp">RSVP</a>
+    <div class="mob-lang">
+      <button class="lang-btn active" data-lang="de">DE</button>
+      <span class="lang-sep" aria-hidden="true">|</span>
+      <button class="lang-btn" data-lang="en">EN</button>
+      <span class="lang-sep" aria-hidden="true">|</span>
+      <button class="lang-btn" data-lang="es">ES</button>
+    </div>
+  </div>
+
+  <!-- ── HERO ────────────────────────────────── -->
+  <section id="hero" aria-label="Hero">
+    <div class="hero">
+      <!-- Floral corner decorations -->
+      <div class="hero-floral hero-floral-tl" aria-hidden="true">
+        <svg viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10,210 Q60,140 90,80 Q120,20 170,5" stroke="#8BA888" stroke-width="1.8" fill="none" opacity="0.8"/>
+          <path d="M10,210 Q40,160 30,120" stroke="#8BA888" stroke-width="1.2" fill="none" opacity="0.5"/>
+          <ellipse cx="35" cy="175" rx="14" ry="7" fill="#8BA888" opacity="0.55" transform="rotate(-50 35 175)"/>
+          <ellipse cx="58" cy="130" rx="16" ry="8" fill="#9BBB98" opacity="0.5" transform="rotate(20 58 130)"/>
+          <ellipse cx="88" cy="82" rx="13" ry="7" fill="#8BA888" opacity="0.55" transform="rotate(-30 88 82)"/>
+          <ellipse cx="130" cy="42" rx="12" ry="6" fill="#9BBB98" opacity="0.45" transform="rotate(15 130 42)"/>
+          <!-- peach flower -->
+          <circle cx="52" cy="155" r="15" fill="#E8B898" opacity="0.6"/>
+          <circle cx="44" cy="148" r="10" fill="#F2C8B0" opacity="0.55"/>
+          <circle cx="60" cy="148" r="9" fill="#E0A890" opacity="0.5"/>
+          <circle cx="52" cy="163" r="8" fill="#F2C8B0" opacity="0.5"/>
+          <circle cx="52" cy="155" r="5" fill="#C87858" opacity="0.65"/>
+          <!-- blush flower -->
+          <circle cx="90" cy="100" r="17" fill="#C98A80" opacity="0.55"/>
+          <circle cx="82" cy="93" r="11" fill="#DDA898" opacity="0.5"/>
+          <circle cx="98" cy="93" r="10" fill="#C88078" opacity="0.45"/>
+          <circle cx="90" cy="109" r="9" fill="#DDA898" opacity="0.5"/>
+          <circle cx="90" cy="100" r="5" fill="#A86860" opacity="0.6"/>
+          <!-- small peach -->
+          <circle cx="148" cy="48" r="11" fill="#E8B898" opacity="0.55"/>
+          <circle cx="143" cy="43" r="7" fill="#F2C8B0" opacity="0.5"/>
+          <circle cx="153" cy="43" r="7" fill="#E0A890" opacity="0.45"/>
+          <circle cx="148" cy="48" r="4" fill="#C87858" opacity="0.6"/>
+          <!-- small buds -->
+          <ellipse cx="25" cy="195" rx="5" ry="8" fill="#C98A80" opacity="0.45" transform="rotate(-20 25 195)"/>
+          <ellipse cx="170" cy="18" rx="4" ry="7" fill="#E8B898" opacity="0.4" transform="rotate(10 170 18)"/>
+        </svg>
+      </div>
+      <div class="hero-floral hero-floral-tr" aria-hidden="true">
+        <svg viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10,210 Q60,140 90,80 Q120,20 170,5" stroke="#8BA888" stroke-width="1.8" fill="none" opacity="0.8"/>
+          <path d="M10,210 Q40,160 30,120" stroke="#8BA888" stroke-width="1.2" fill="none" opacity="0.5"/>
+          <ellipse cx="35" cy="175" rx="14" ry="7" fill="#8BA888" opacity="0.55" transform="rotate(-50 35 175)"/>
+          <ellipse cx="58" cy="130" rx="16" ry="8" fill="#9BBB98" opacity="0.5" transform="rotate(20 58 130)"/>
+          <ellipse cx="88" cy="82" rx="13" ry="7" fill="#8BA888" opacity="0.55" transform="rotate(-30 88 82)"/>
+          <ellipse cx="130" cy="42" rx="12" ry="6" fill="#9BBB98" opacity="0.45" transform="rotate(15 130 42)"/>
+          <circle cx="52" cy="155" r="15" fill="#E8B898" opacity="0.6"/>
+          <circle cx="44" cy="148" r="10" fill="#F2C8B0" opacity="0.55"/>
+          <circle cx="60" cy="148" r="9" fill="#E0A890" opacity="0.5"/>
+          <circle cx="52" cy="163" r="8" fill="#F2C8B0" opacity="0.5"/>
+          <circle cx="52" cy="155" r="5" fill="#C87858" opacity="0.65"/>
+          <circle cx="90" cy="100" r="17" fill="#C98A80" opacity="0.55"/>
+          <circle cx="82" cy="93" r="11" fill="#DDA898" opacity="0.5"/>
+          <circle cx="98" cy="93" r="10" fill="#C88078" opacity="0.45"/>
+          <circle cx="90" cy="109" r="9" fill="#DDA898" opacity="0.5"/>
+          <circle cx="90" cy="100" r="5" fill="#A86860" opacity="0.6"/>
+          <circle cx="148" cy="48" r="11" fill="#E8B898" opacity="0.55"/>
+          <circle cx="143" cy="43" r="7" fill="#F2C8B0" opacity="0.5"/>
+          <circle cx="153" cy="43" r="7" fill="#E0A890" opacity="0.45"/>
+          <circle cx="148" cy="48" r="4" fill="#C87858" opacity="0.6"/>
+          <ellipse cx="25" cy="195" rx="5" ry="8" fill="#C98A80" opacity="0.45" transform="rotate(-20 25 195)"/>
+          <ellipse cx="170" cy="18" rx="4" ry="7" fill="#E8B898" opacity="0.4" transform="rotate(10 170 18)"/>
+        </svg>
+      </div>
+
+      <div class="hero-content">
+        <p class="hero-eyebrow" data-i18n="hero.eyebrow">17 · Oktober · 2026</p>
+        <h1 class="hero-title">
+          <span class="hero-name">Karen</span>
+          <span class="hero-connector">y</span>
+          <span class="hero-name">Jonathan</span>
+        </h1>
+        <div class="hero-sep" aria-hidden="true"><span class="hero-sep-d"></span></div>
+        <p class="hero-location" data-i18n="hero.location">Cayambe · Ecuador</p>
+        <a href="#rsvp" class="hero-cta" data-i18n="hero.cta">Zusagen</a>
+      </div>
+
+
+      <div class="hero-scroll" aria-hidden="true">
+        <div class="hero-scroll-line"></div>
+        <span data-i18n="hero.scroll">Scroll</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── DETAILS + DRESSCODE ─────────────────── -->
+  <section class="details-section">
+    <div class="container">
+
+      <header class="section-header reveal" style="margin-bottom: 32px;">
+        <p class="eyebrow" data-i18n="details.eyebrow">Der Tag</p>
+        <h2 style="font-style: italic;" data-i18n="details.headline">Die wichtigsten Infos</h2>
+        <div class="ornament" aria-hidden="true"><span class="diamond"></span></div>
+      </header>
+
+      <div class="detail-tiles">
+        <div class="detail-tile tile-1 reveal">
+          <div class="tile-inner">
+            <span class="tile-label" data-i18n="tile.date.label">Datum</span>
+            <div class="tile-divider"></div>
+            <span class="tile-value" data-i18n="tile.date.val">17. Oktober 2026</span>
+          </div>
+        </div>
+        <div class="detail-tile tile-2 reveal" style="transition-delay:.08s">
+          <div class="tile-inner">
+            <span class="tile-label" data-i18n="tile.venue.label">Ort</span>
+            <div class="tile-divider"></div>
+            <span class="tile-value" data-i18n="tile.venue.val">El Torreal, Cayambe</span>
+          </div>
+        </div>
+        <div class="detail-tile tile-3 reveal" style="transition-delay:.16s">
+          <div class="tile-inner">
+            <span class="tile-label" data-i18n="tile.time.label">Uhrzeit</span>
+            <div class="tile-divider"></div>
+            <span class="tile-value" data-i18n="tile.time.val">14:00 Uhr</span>
+          </div>
+        </div>
+        <div class="detail-tile tile-4 reveal" style="transition-delay:.24s">
+          <div class="tile-inner">
+            <span class="tile-label" data-i18n="tile.dress.label">Dresscode</span>
+            <div class="tile-divider"></div>
+            <span class="tile-value" data-i18n="tile.dress.val">Garden Party Formal</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="dresscode-palette reveal">
+        <span class="palette-note" data-i18n="palette.note">We love all humans. If you have the possibility, we are celebrating in these colors:</span>
+        <div class="palette-swatches">
+          <div class="swatch">
+            <div class="swatch-circle" style="background:#8BA888"></div>
+            <span class="swatch-name" data-i18n="sw.sage">Sage</span>
+          </div>
+          <div class="swatch">
+            <div class="swatch-circle" style="background:#E8B898"></div>
+            <span class="swatch-name" data-i18n="sw.apricot">Apricot</span>
+          </div>
+          <div class="swatch">
+            <div class="swatch-circle" style="background:#C4714F"></div>
+            <span class="swatch-name" data-i18n="sw.coral">Coral</span>
+          </div>
+          <div class="swatch">
+            <div class="swatch-circle" style="background:#C98A80"></div>
+            <span class="swatch-name" data-i18n="sw.blush">Blush</span>
+          </div>
+          <div class="swatch">
+            <div class="swatch-circle" style="background:#F5E8CC"></div>
+            <span class="swatch-name" data-i18n="sw.butter">Buttercream</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ── SCHEDULE & RSVP ─────────────────────── -->
+  <section id="schedule" class="schedule-section">
+    <div class="container">
+      <header class="section-header reveal">
+        <h2 style="font-style: italic;" data-i18n="sched.title">Programm &amp; Anmeldung</h2>
+        <div class="ornament" aria-hidden="true"><span class="diamond"></span></div>
+      </header>
+
+      <!-- Tab switcher -->
+      <div class="schedule-tabs reveal" role="tablist">
+        <button class="stab-btn active" data-tab="wedding" role="tab" aria-selected="true" data-i18n="tab.wedding">Hochzeitstag</button>
+        <button class="stab-btn" data-tab="prewed" role="tab" aria-selected="false" data-i18n="tab.prewed">Vortage</button>
+      </div>
+
+      <!-- ── Tab: Wedding Day ── -->
+      <div class="tab-pane active" id="tab-wedding" role="tabpanel">
+        <div class="schedule-grid">
+
+          <!-- Timeline -->
+          <div class="card reveal">
+            <h3 class="card-title" data-i18n="timeline.title">Tagesablauf</h3>
+            <div class="timeline" role="list">
+              <div class="timeline-item" role="listitem">
+                <span class="t-time" data-i18n="e1.time">14:00</span>
+                <div class="t-dot" aria-hidden="true"></div>
+                <div class="t-body">
+                  <h4 data-i18n="e1.title">Trauung</h4>
+                  <p data-i18n="e1.desc">Kirchliche Zeremonie</p>
+                </div>
+              </div>
+              <div class="timeline-item" role="listitem">
+                <span class="t-time" data-i18n="e2.time">15:30</span>
+                <div class="t-dot" aria-hidden="true"></div>
+                <div class="t-body">
+                  <h4 data-i18n="e2.title">Empfang</h4>
+                  <p data-i18n="e2.desc">Sekt &amp; Canapés im Freien</p>
+                </div>
+              </div>
+              <div class="timeline-item" role="listitem">
+                <span class="t-time" data-i18n="e3.time">18:00</span>
+                <div class="t-dot" aria-hidden="true"></div>
+                <div class="t-body">
+                  <h4 data-i18n="e3.title">Abendessen</h4>
+                  <p data-i18n="e3.desc">Festliches Dinner</p>
+                </div>
+              </div>
+              <div class="timeline-item" role="listitem">
+                <span class="t-time" data-i18n="e4.time">20:00</span>
+                <div class="t-dot" aria-hidden="true"></div>
+                <div class="t-body">
+                  <h4 data-i18n="e4.title">Party</h4>
+                  <p data-i18n="e4.desc">Musik &amp; Tanzen</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- RSVP -->
+          <div class="card rsvp-card reveal" id="rsvp">
+            <h3 class="card-title" data-i18n="rsvp.title">Anmeldung</h3>
+            <p class="rsvp-note" data-i18n="rsvp.note">Bitte bis 30. Juni 2026 antworten</p>
+
+            <form id="rsvpForm" novalidate>
+
+              <div class="form-group">
+                <label for="main-name" data-i18n="form.name">Name *</label>
+                <input
+                  type="text"
+                  id="main-name"
+                  name="name"
+                  autocomplete="name"
+                  data-i18n-placeholder="form.name.ph"
+                  placeholder="Vor- und Nachname"
+                  required
+                >
+              </div>
+
+              <!-- Dynamic companion list -->
+              <div class="form-group">
+                <label data-i18n="form.companions.label">Begleitung</label>
+                <div class="guest-list" id="guestList"></div>
+                <button type="button" class="add-guest-btn" id="addGuestBtn">
+                  <span class="add-plus" aria-hidden="true">+</span>
+                  <span data-i18n="form.add">Begleitung hinzufügen</span>
+                </button>
+              </div>
+
+              <div class="form-group">
+                <label data-i18n="form.attendance">Anwesenheit</label>
+                <div class="attendance-grid">
+                  <div class="attend-opt">
+                    <input type="radio" name="attendance" id="att-yes" value="Ja" checked>
+                    <label for="att-yes" data-i18n="form.yes">Ja</label>
+                  </div>
+                  <div class="attend-opt">
+                    <input type="radio" name="attendance" id="att-maybe" value="Vielleicht">
+                    <label for="att-maybe" data-i18n="form.maybe">Vielleicht</label>
+                  </div>
+                  <div class="attend-opt">
+                    <input type="radio" name="attendance" id="att-no" value="Nein">
+                    <label for="att-no" data-i18n="form.no">Nein</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label data-i18n="form.food">Menüwahl</label>
+                <div class="attendance-grid">
+                  <div class="attend-opt">
+                    <input type="radio" name="food" id="food-meat" value="Fleisch" checked>
+                    <label for="food-meat" data-i18n="form.food.meat">🥩 Fleisch</label>
+                  </div>
+                  <div class="attend-opt">
+                    <input type="radio" name="food" id="food-veg" value="Vegetarisch">
+                    <label for="food-veg" data-i18n="form.food.veg">🥗 Vegetarisch</label>
+                  </div>
+                  <div class="attend-opt">
+                    <input type="radio" name="food" id="food-vegan" value="Vegan">
+                    <label for="food-vegan" data-i18n="form.food.vegan">🌱 Vegan</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label data-i18n="form.babies">Kleinkinder / Babys</label>
+                <div class="attendance-grid" style="grid-template-columns: repeat(2, 1fr)">
+                  <div class="attend-opt">
+                    <input type="radio" name="babies" id="babies-no" value="Nein" checked>
+                    <label for="babies-no" data-i18n="form.babies.no">Nein</label>
+                  </div>
+                  <div class="attend-opt">
+                    <input type="radio" name="babies" id="babies-yes" value="Ja">
+                    <label for="babies-yes" data-i18n="form.babies.yes">Ja, wir bringen ein Baby / Kleinkind mit</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="message" data-i18n="form.message">Nachricht (optional)</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  data-i18n-placeholder="form.message.ph"
+                  placeholder="Besondere Wünsche, Diätanforderungen …"
+                ></textarea>
+              </div>
+
+              <button type="submit" class="submit-btn" id="submitBtn" data-i18n="form.submit">Anmelden</button>
+            </form>
+
+            <div class="form-success" id="formSuccess">
+              <p data-i18n="form.success">Vielen Dank!</p>
+              <small data-i18n="form.success.sub">Wir freuen uns auf euch — bis zum 17. Oktober.</small>
+            </div>
+          </div>
+
+        </div>
+      </div><!-- /tab-wedding -->
+
+      <!-- ── Tab: Pre-Wedding ── -->
+      <div class="tab-pane" id="tab-prewed" role="tabpanel">
+        <div class="schedule-grid">
+
+          <div class="card reveal" style="grid-column: 1 / -1; max-width: 640px; margin: 0 auto; width: 100%;">
+            <h3 class="card-title" data-i18n="prewed.title">Pre-Wedding Programm</h3>
+            <p class="prewed-intro-text" data-i18n="prewed.intro">Wer früher anreist, ist herzlich eingeladen an unseren Aktivitäten teilzunehmen.</p>
+
+            <div class="prewed-days">
+
+              <div class="prewed-day">
+                <div class="prewed-day-label">
+                  <span class="prewed-weekday" data-i18n="pw1.day">Mittwoch</span>
+                  <span class="prewed-date" data-i18n="pw1.date">14. Oktober</span>
+                </div>
+                <div class="prewed-day-body">
+                  <h4 data-i18n="pw1.title">Ankunft &amp; Willkommensabend</h4>
+                  <p data-i18n="pw1.desc">Anreise und Einchecken. Am Abend laden wir herzlich zu einem gemeinsamen Willkommensessen ein.</p>
+                </div>
+              </div>
+
+              <div class="prewed-day">
+                <div class="prewed-day-label">
+                  <span class="prewed-weekday" data-i18n="pw2.day">Donnerstag</span>
+                  <span class="prewed-date" data-i18n="pw2.date">15. Oktober</span>
+                </div>
+                <div class="prewed-day-body">
+                  <h4 data-i18n="pw2.title">Quito &amp; Otavalo</h4>
+                  <p data-i18n="pw2.desc">Ausflug in die UNESCO-Altstadt von Quito oder zum berühmten Indigenenmarkt in Otavalo.</p>
+                </div>
+              </div>
+
+              <div class="prewed-day">
+                <div class="prewed-day-label">
+                  <span class="prewed-weekday" data-i18n="pw3.day">Freitag</span>
+                  <span class="prewed-date" data-i18n="pw3.date">16. Oktober</span>
+                </div>
+                <div class="prewed-day-body">
+                  <h4 data-i18n="pw3.title">Rehearsal &amp; Abendessen</h4>
+                  <p data-i18n="pw3.desc">Entspannung auf der Hacienda. Am Abend Probeabend und Dinner mit der engsten Familie.</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div><!-- /tab-prewed -->
+
+    </div>
+  </section>
+
+  <!-- ── TRAVEL & ACCOMMODATION ──────────────── -->
+  <section id="travel" class="travel-section">
+    <div class="container">
+      <header class="section-header reveal">
+        <p class="eyebrow" data-i18n="travel.eyebrow">Praktisches</p>
+        <h2 data-i18n="travel.title">Anreise &amp; Unterkunft</h2>
+        <div class="ornament" aria-hidden="true"><span class="diamond"></span></div>
+      </header>
+
+      <div class="travel-grid">
+
+        <!-- Travel info -->
+        <div class="travel-info reveal">
+          <h3 data-i18n="travel.info.title">Anreise</h3>
+
+          <div class="travel-item">
+            <svg class="travel-icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5"/>
+            </svg>
+            <div>
+              <h4 data-i18n="ti1.title">Flughafen Quito (UIO)</h4>
+              <p data-i18n="ti1.desc">Aeropuerto Internacional Mariscal Sucre — ca. 80 km von Cayambe. Direktverbindungen aus Europa via Madrid, Amsterdam und Frankfurt.</p>
+            </div>
+          </div>
+
+          <div class="travel-item">
+            <svg class="travel-icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 0 0-3.213-9.193 2.056 2.056 0 0 0-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 0 0-10.026 0 1.106 1.106 0 0 0-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12"/>
+            </svg>
+            <div>
+              <h4 data-i18n="ti2.title">Transfer nach Cayambe</h4>
+              <p data-i18n="ti2.desc">Ca. 1,5 Std. vom Flughafen per Taxi oder privatem Shuttle. Transfer-Koordination auf Anfrage — wir helfen gerne.</p>
+            </div>
+          </div>
+
+          <div class="travel-item">
+            <svg class="travel-icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 0 0 1.5-.189m-1.5.189a6.01 6.01 0 0 1-1.5-.189m3.75 7.478a12.06 12.06 0 0 1-4.5 0m3.75 2.355a7.5 7.5 0 0 1-3 0m3 0a7.5 7.5 0 0 0 3 0m-3 0v-3.375c0-.621.504-1.125 1.125-1.125h.375a1.125 1.125 0 0 1 1.125 1.125v3.375m-9-3.375V15m0 3.375a7.5 7.5 0 0 0 3 0m0 0a7.5 7.5 0 0 1 3 0m-6 0v-3.375c0-.621-.504-1.125-1.125-1.125H9.375A1.125 1.125 0 0 0 8.25 12v3.375"/>
+            </svg>
+            <div>
+              <h4 data-i18n="ti3.title">Tipp</h4>
+              <p data-i18n="ti3.desc">Plant 2–3 Tage früher ein und entdeckt Quito — die Kolonialaltstadt ist UNESCO-Weltkulturerbe.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Single accommodation -->
+        <div class="accomm-col reveal">
+          <h3 data-i18n="accomm.title">Unterkunft</h3>
+          <div class="accomm-card">
+            <img
+              src="images/eltorreal-venue.jpg"
+              alt="Hacienda am See mit Eukalyptusbäumen"
+              class="accomm-img"
+              loading="lazy"
+            >
+            <div class="accomm-body">
+              <span class="accomm-badge" data-i18n="ac1.badge">Empfohlen</span>
+              <h4 data-i18n="ac1.name">Hacienda Guachalá</h4>
+              <p data-i18n="ac1.desc">Die älteste Hacienda Ecuadors, direkt bei Cayambe. Koloniales Ambiente, weitläufige Gärten und Blick auf den Vulkan.</p>
+              <p class="accomm-dist" data-i18n="ac1.dist">→ 5 min zum Veranstaltungsort</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── DISCOVER ECUADOR ─────────────────────── -->
+  <section id="ecuador" class="ecuador-section">
+    <div class="container">
+      <header class="section-header reveal">
+        <p class="eyebrow" data-i18n="ecu.eyebrow">Unser Land</p>
+        <h2 data-i18n="ecu.title">Ecuador entdecken</h2>
+        <div class="ornament" aria-hidden="true"><span class="diamond"></span></div>
+      </header>
+
+      <div class="ecuador-intro reveal">
+        <p data-i18n="ecu.intro">Ecuador vereint auf kleinstem Raum schneebedeckte Vulkane, tropischen Regenwald, den Pazifik und die einzigartigen Galápagos-Inseln. Wir freuen uns, dieses besondere Land mit euch zu teilen.</p>
+      </div>
+
+      <div class="photo-grid">
+        <div class="photo-card reveal">
+          <img src="images/cotopaxi.jpg" alt="Vulkan Cotopaxi mit schneebedecktem Gipfel und goldenen Páramo-Grasebenen" loading="lazy">
+          <div class="photo-overlay">
+            <h4 data-i18n="ph1.title">Los Andes</h4>
+            <p data-i18n="ph1.sub">Vulkane &amp; Páramo</p>
+          </div>
+        </div>
+        <div class="photo-card reveal" style="transition-delay:.1s">
+          <img src="images/altstadt.jpg" alt="Historische Altstadt von Quito mit kolonialer Architektur" loading="lazy">
+          <div class="photo-overlay">
+            <h4 data-i18n="ph2.title">Quito</h4>
+            <p data-i18n="ph2.sub">UNESCO-Weltkulturerbe</p>
+          </div>
+        </div>
+        <div class="photo-card reveal" style="transition-delay:.2s">
+          <img src="images/sea_lion.jpg" alt="Galápagos-Seelöwe am Sandstrand mit türkisblauem Ozean" loading="lazy">
+          <div class="photo-overlay">
+            <h4 data-i18n="ph3.title">Galápagos</h4>
+            <p data-i18n="ph3.sub">Naturparadies im Pazifik</p>
+          </div>
+        </div>
+        <div class="photo-card reveal" style="transition-delay:.3s">
+          <img src="images/banos.jpg" alt="Dramatischer Wasserfall-Canyon in Baños, Ecuador" loading="lazy">
+          <div class="photo-overlay">
+            <h4 data-i18n="ph4.title">Baños</h4>
+            <p data-i18n="ph4.sub">Wasserfälle &amp; Abenteuer</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="highlights-grid">
+        <div class="highlight reveal">
+          <h4 data-i18n="hl1.title">Cayambe — Stadt am Äquator</h4>
+          <p data-i18n="hl1.desc">Cayambe liegt genau auf dem Äquator — der einzige Punkt der Erde, an dem ein schneebedeckter Vulkan direkt am Nullmeridian steht.</p>
+          <div class="alpaca-deco" aria-hidden="true">
+            <svg viewBox="0 0 60 88" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- fluffy mane -->
+              <ellipse cx="31" cy="13" rx="11" ry="9" fill="#F0DFC0" opacity="0.9"/>
+              <circle cx="25" cy="10" r="6" fill="#EDD8B0"/>
+              <circle cx="37" cy="10" r="6" fill="#EDD8B0"/>
+              <circle cx="31" cy="8" r="7" fill="#F5E8CC"/>
+              <!-- ears -->
+              <ellipse cx="22" cy="16" rx="3.5" ry="6" fill="#E8D4A8" transform="rotate(-18 22 16)"/>
+              <ellipse cx="40" cy="16" rx="3.5" ry="6" fill="#E8D4A8" transform="rotate(18 40 16)"/>
+              <ellipse cx="22" cy="16" rx="2" ry="4" fill="#C98A80" opacity="0.6" transform="rotate(-18 22 16)"/>
+              <ellipse cx="40" cy="16" rx="2" ry="4" fill="#C98A80" opacity="0.6" transform="rotate(18 40 16)"/>
+              <!-- head -->
+              <ellipse cx="31" cy="24" rx="10" ry="11" fill="#E8D4A8"/>
+              <!-- face -->
+              <circle cx="26" cy="22" r="2.5" fill="#3A2A1C"/>
+              <circle cx="27" cy="21" r="1" fill="white" opacity="0.8"/>
+              <!-- nose -->
+              <ellipse cx="31" cy="31" rx="5" ry="3" fill="#D4B890"/>
+              <ellipse cx="29" cy="30" rx="1.5" ry="1" fill="#8B6040" opacity="0.7"/>
+              <ellipse cx="33" cy="30" rx="1.5" ry="1" fill="#8B6040" opacity="0.7"/>
+              <!-- neck -->
+              <path d="M24,34 Q23,44 22,52 L40,52 Q39,44 38,34 Z" fill="#E8D4A8"/>
+              <!-- body -->
+              <ellipse cx="31" cy="63" rx="17" ry="16" fill="#E8D4A8"/>
+              <!-- body texture -->
+              <ellipse cx="31" cy="60" rx="14" ry="12" fill="#F0DFC0" opacity="0.5"/>
+              <!-- legs -->
+              <rect x="17" y="74" width="6" height="13" rx="3" fill="#D4C0A0"/>
+              <rect x="24" y="76" width="6" height="11" rx="3" fill="#D4C0A0"/>
+              <rect x="31" y="76" width="6" height="11" rx="3" fill="#D4C0A0"/>
+              <rect x="38" y="74" width="6" height="13" rx="3" fill="#D4C0A0"/>
+              <!-- hooves -->
+              <ellipse cx="20" cy="87" rx="4" ry="2" fill="#8B7060"/>
+              <ellipse cx="27" cy="87" rx="4" ry="2" fill="#8B7060"/>
+              <ellipse cx="34" cy="87" rx="4" ry="2" fill="#8B7060"/>
+              <ellipse cx="41" cy="87" rx="4" ry="2" fill="#8B7060"/>
+              <!-- tail -->
+              <ellipse cx="48" cy="63" rx="4" ry="6" fill="#E8D4A8" transform="rotate(20 48 63)"/>
+            </svg>
+          </div>
+        </div>
+        <div class="highlight reveal" style="transition-delay:.12s">
+          <h4 data-i18n="hl2.title">Kultur &amp; Tradition</h4>
+          <p data-i18n="hl2.desc">Ecuador ist Heimat von über 14 indigenen Gruppen. Farbenfrohe Märkte, vorspanische Zeremonien und lebendiges Kunsthandwerk prägen das kulturelle Erbe.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── FOOTER ───────────────────────────────── -->
+  <footer>
+    <p class="footer-names">Karen y Jonathan</p>
+    <p class="footer-info" data-i18n="footer.info">17 · 10 · 2026 &nbsp;·&nbsp; Cayambe, Ecuador</p>
+  </footer>
+
+  <script>
+    /* ═══════════════════════════════════════════
+       TRANSLATIONS
+    ═══════════════════════════════════════════ */
+    const T = {
+      de: {
+        'nav.schedule': 'Programm', 'nav.travel': 'Anreise', 'nav.ecuador': 'Ecuador', 'nav.rsvp': 'RSVP',
+        'hero.eyebrow': '17 · Oktober · 2026', 'hero.location': 'Cayambe · Ecuador',
+        'hero.cta': 'Zusagen', 'hero.scroll': 'Scroll',
+        'sched.eyebrow': '17. Oktober 2026', 'sched.eyebrow.sub': '17 · Oktober · 2026', 'sched.title': 'Programm & Anmeldung',
+        'tab.wedding': 'Hochzeitstag', 'tab.prewed': 'Vortage',
+        'timeline.title': 'Tagesablauf',
+        'e1.time': '14:00', 'e1.title': 'Trauung', 'e1.desc': 'Kirchliche Zeremonie',
+        'e2.time': '15:30', 'e2.title': 'Empfang', 'e2.desc': 'Sekt & Canapés im Freien',
+        'e3.time': '18:00', 'e3.title': 'Abendessen', 'e3.desc': 'Festliches Dinner',
+        'e4.time': '20:00', 'e4.title': 'Party', 'e4.desc': 'Musik & Tanzen',
+        'prewed.title': 'Pre-Wedding Programm',
+        'prewed.intro': 'Wer früher anreist, ist herzlich eingeladen an unseren Aktivitäten teilzunehmen.',
+        'pw1.day': 'Mittwoch', 'pw1.date': '14. Oktober',
+        'pw1.title': 'Ankunft & Willkommensabend',
+        'pw1.desc': 'Anreise und Einchecken. Am Abend laden wir herzlich zu einem gemeinsamen Willkommensessen ein.',
+        'pw2.day': 'Donnerstag', 'pw2.date': '15. Oktober',
+        'pw2.title': 'Quito & Otavalo',
+        'pw2.desc': 'Ausflug in die UNESCO-Altstadt von Quito oder zum berühmten Indigenenmarkt in Otavalo.',
+        'pw3.day': 'Freitag', 'pw3.date': '16. Oktober',
+        'pw3.title': 'Rehearsal & Abendessen',
+        'pw3.desc': 'Entspannung auf der Hacienda. Am Abend Probeabend und Dinner mit der engsten Familie.',
+        'rsvp.title': 'Anmeldung', 'rsvp.note': 'Bitte bis 30. Juni 2026 antworten',
+        'form.name': 'Name *', 'form.name.ph': 'Vor- und Nachname',
+        'form.companions.label': 'Begleitung (Partner / Kinder)',
+        'form.add': 'Begleitung hinzufügen', 'form.guest.ph': 'Name der Begleitung',
+        'form.attendance': 'Anwesenheit',
+        'form.yes': 'Ja', 'form.maybe': 'Vielleicht', 'form.no': 'Nein',
+        'form.food': 'Menüwahl', 'form.food.meat': '🥩 Fleisch', 'form.food.veg': '🥗 Vegetarisch', 'form.food.vegan': '🌱 Vegan',
+        'form.babies': 'Kleinkinder / Babys', 'form.babies.no': 'Nein', 'form.babies.yes': 'Ja, wir bringen ein Baby / Kleinkind mit',
+        'form.message': 'Nachricht (optional)', 'form.message.ph': 'Besondere Wünsche …',
+        'form.submit': 'Anmelden', 'form.sending': 'Wird gesendet …',
+        'form.error': 'Fehler – bitte erneut versuchen',
+        'form.success': 'Vielen Dank!',
+        'form.success.sub': 'Wir freuen uns auf euch — bis zum 17. Oktober.',
+        'travel.eyebrow': 'Praktisches', 'travel.title': 'Anreise & Unterkunft',
+        'travel.info.title': 'Anreise',
+        'ti1.title': 'Flughafen Quito (UIO)',
+        'ti1.desc': 'Aeropuerto Internacional Mariscal Sucre — ca. 80 km von Cayambe. Direktverbindungen aus Europa via Madrid, Amsterdam und Frankfurt.',
+        'ti2.title': 'Transfer nach Cayambe',
+        'ti2.desc': 'Ca. 1,5 Std. vom Flughafen per Taxi oder privatem Shuttle. Transfer-Koordination auf Anfrage — wir helfen gerne.',
+        'ti3.title': 'Tipp',
+        'ti3.desc': 'Plant 2–3 Tage früher ein und entdeckt Quito — die Kolonialaltstadt ist UNESCO-Weltkulturerbe.',
+        'accomm.title': 'Unterkunft', 'ac1.badge': 'Empfohlen',
+        'ac1.name': 'Hacienda Guachalá',
+        'ac1.desc': 'Die älteste Hacienda Ecuadors, direkt bei Cayambe. Koloniales Ambiente, weitläufige Gärten und Blick auf den Vulkan.',
+        'ac1.dist': '→ 5 min zum Veranstaltungsort',
+        'ecu.eyebrow': 'Unser Land', 'ecu.title': 'Ecuador entdecken',
+        'ecu.intro': 'Ecuador vereint auf kleinstem Raum schneebedeckte Vulkane, tropischen Regenwald, den Pazifik und die einzigartigen Galápagos-Inseln. Wir freuen uns, dieses besondere Land mit euch zu teilen.',
+        'ph1.title': 'Los Andes', 'ph1.sub': 'Vulkane & Páramo',
+        'ph2.title': 'Quito', 'ph2.sub': 'UNESCO-Weltkulturerbe',
+        'ph3.title': 'Galápagos', 'ph3.sub': 'Naturparadies im Pazifik',
+        'ph4.title': 'Baños', 'ph4.sub': 'Wasserfälle & Abenteuer',
+        'hl1.title': 'Cayambe — Stadt am Äquator',
+        'hl1.desc': 'Cayambe liegt genau auf dem Äquator — der einzige Punkt der Erde, an dem ein schneebedeckter Vulkan direkt am Nullmeridian steht.',
+        'hl2.title': 'Kultur & Tradition',
+        'hl2.desc': 'Ecuador ist Heimat von über 14 indigenen Gruppen. Farbenfrohe Märkte, vorspanische Zeremonien und lebendiges Kunsthandwerk prägen das kulturelle Erbe.',
+        'footer.info': '17 · 10 · 2026  ·  Cayambe, Ecuador',
+        'details.eyebrow': 'Der Tag', 'details.headline': 'Die wichtigsten Infos',
+        'details.title': 'Ein Wochenende zwischen Anden, Natur und ganz viel Liebe',
+        'details.text': 'Auf dieser Seite findet ihr alle wichtigen Informationen zu unserer Hochzeit in El Torreal, Cayambe — Hinweise zur Anreise, Unterkunft und ein paar Ideen für alle, die den Trip mit Urlaub verbinden möchten.',
+        'tile.date.label': 'Datum', 'tile.date.val': '17. Oktober 2026',
+        'tile.venue.label': 'Ort', 'tile.venue.val': 'El Torreal, Cayambe',
+        'tile.time.label': 'Uhrzeit', 'tile.time.val': '14:00 Uhr',
+        'tile.dress.label': 'Dresscode', 'tile.dress.val': 'Garden Party Formal',
+        'palette.eyebrow': 'Dresscode', 'palette.title': 'Farbpalette für eure Outfits',
+        'palette.subtitle': 'Wir freuen uns über Outfits in diesen warmen, natürlichen Tönen',
+        'palette.note': 'Wir lieben alle Menschen. Wenn möglich, freuen wir uns über Outfits in diesen Farben:',
+        'sw.sage': 'Sage', 'sw.apricot': 'Apricot', 'sw.coral': 'Coral', 'sw.blush': 'Blush', 'sw.butter': 'Buttercream',
+      },
+      en: {
+        'nav.schedule': 'Schedule', 'nav.travel': 'Travel', 'nav.ecuador': 'Ecuador', 'nav.rsvp': 'RSVP',
+        'hero.eyebrow': '17 · October · 2026', 'hero.location': 'Cayambe · Ecuador',
+        'hero.cta': 'RSVP', 'hero.scroll': 'Scroll',
+        'sched.eyebrow': 'October 17, 2026', 'sched.eyebrow.sub': '17 · October · 2026', 'sched.title': 'Schedule & RSVP',
+        'tab.wedding': 'Wedding Day', 'tab.prewed': 'Pre-Wedding',
+        'timeline.title': 'Day Schedule',
+        'e1.time': '14:00', 'e1.title': 'Ceremony', 'e1.desc': 'Church Ceremony',
+        'e2.time': '15:30', 'e2.title': 'Reception', 'e2.desc': 'Champagne & Canapés',
+        'e3.time': '18:00', 'e3.title': 'Dinner', 'e3.desc': 'Festive Dinner',
+        'e4.time': '20:00', 'e4.title': 'Party', 'e4.desc': 'Music & Dancing',
+        'prewed.title': 'Pre-Wedding Program',
+        'prewed.intro': 'Those arriving early are warmly invited to join our pre-wedding activities.',
+        'pw1.day': 'Wednesday', 'pw1.date': 'October 14',
+        'pw1.title': 'Arrival & Welcome Dinner',
+        'pw1.desc': 'Arrival and check-in. In the evening we invite everyone to a welcome dinner together.',
+        'pw2.day': 'Thursday', 'pw2.date': 'October 15',
+        'pw2.title': 'Quito & Otavalo',
+        'pw2.desc': 'Excursion to Quito\'s UNESCO historic center or the famous indigenous market in Otavalo.',
+        'pw3.day': 'Friday', 'pw3.date': 'October 16',
+        'pw3.title': 'Rehearsal & Dinner',
+        'pw3.desc': 'Relaxing afternoon at the Hacienda. Evening rehearsal and dinner with close family.',
+        'rsvp.title': 'RSVP', 'rsvp.note': 'Please reply by June 30, 2026',
+        'form.name': 'Name *', 'form.name.ph': 'First and last name',
+        'form.companions.label': 'Companions (partner / children)',
+        'form.add': 'Add companion', 'form.guest.ph': 'Companion\'s name',
+        'form.attendance': 'Attendance',
+        'form.yes': 'Yes', 'form.maybe': 'Maybe', 'form.no': 'No',
+        'form.food': 'Menu choice', 'form.food.meat': '🥩 Meat', 'form.food.veg': '🥗 Vegetarian', 'form.food.vegan': '🌱 Vegan',
+        'form.babies': 'Infants / Babies', 'form.babies.no': 'No', 'form.babies.yes': 'Yes, we are bringing a baby / toddler',
+        'form.message': 'Message (optional)', 'form.message.ph': 'Special requests …',
+        'form.submit': 'Submit RSVP', 'form.sending': 'Sending …',
+        'form.error': 'Error – please try again',
+        'form.success': 'Thank you!',
+        'form.success.sub': 'We look forward to celebrating with you on October 17.',
+        'travel.eyebrow': 'Practical Info', 'travel.title': 'Travel & Accommodation',
+        'travel.info.title': 'Getting There',
+        'ti1.title': 'Quito Airport (UIO)',
+        'ti1.desc': 'Mariscal Sucre International Airport — approx. 80 km from Cayambe. Direct flights from Europe via Madrid, Amsterdam and Frankfurt.',
+        'ti2.title': 'Transfer to Cayambe',
+        'ti2.desc': 'Approx. 1.5 hours from the airport by taxi or private shuttle. Transfer coordination available on request.',
+        'ti3.title': 'Tip',
+        'ti3.desc': 'Plan to arrive 2–3 days early and explore Quito — its colonial old town is a UNESCO World Heritage Site.',
+        'accomm.title': 'Accommodation', 'ac1.badge': 'Recommended',
+        'ac1.name': 'Hacienda Guachalá',
+        'ac1.desc': 'Ecuador\'s oldest hacienda, just outside Cayambe. Colonial charm, sweeping gardens and views of the volcano.',
+        'ac1.dist': '→ 5 min from the venue',
+        'ecu.eyebrow': 'Our Country', 'ecu.title': 'Discover Ecuador',
+        'ecu.intro': 'Ecuador packs snow-capped volcanoes, tropical rainforest, the Pacific coast and the unique Galápagos Islands into a remarkably small country. We can\'t wait to share it with you.',
+        'ph1.title': 'Los Andes', 'ph1.sub': 'Volcanoes & Páramo',
+        'ph2.title': 'Quito', 'ph2.sub': 'UNESCO World Heritage',
+        'ph3.title': 'Galápagos', 'ph3.sub': 'Natural Paradise',
+        'ph4.title': 'Baños', 'ph4.sub': 'Waterfalls & Adventure',
+        'hl1.title': 'Cayambe — City on the Equator',
+        'hl1.desc': 'Cayambe sits right on the equator — the only place on Earth where a snow-capped volcano stands directly on the zero meridian.',
+        'hl2.title': 'Culture & Tradition',
+        'hl2.desc': 'Ecuador is home to over 14 indigenous groups. Colorful markets, pre-Columbian ceremonies and vibrant craftsmanship define its cultural heritage.',
+        'footer.info': '17 · 10 · 2026  ·  Cayambe, Ecuador',
+        'details.eyebrow': 'The Day', 'details.headline': 'The Most Important Info',
+        'details.title': 'A Weekend Among the Andes, Nature and Lots of Love',
+        'details.text': 'Here you\'ll find all the important information about our wedding at El Torreal, Cayambe — travel tips, accommodation and ideas for those who want to combine the trip with a holiday.',
+        'tile.date.label': 'Date', 'tile.date.val': 'October 17, 2026',
+        'tile.venue.label': 'Venue', 'tile.venue.val': 'El Torreal, Cayambe',
+        'tile.time.label': 'Time', 'tile.time.val': '2:00 pm',
+        'tile.dress.label': 'Dress Code', 'tile.dress.val': 'Garden Party Formal',
+        'palette.eyebrow': 'Dress Code', 'palette.title': 'Color Palette for Your Outfits',
+        'palette.subtitle': 'We\'d love to see warm, natural tones like these',
+        'palette.note': 'We love all humans. If you have the possibility, we are celebrating in these colors:',
+        'sw.sage': 'Sage', 'sw.apricot': 'Apricot', 'sw.coral': 'Coral', 'sw.blush': 'Blush', 'sw.butter': 'Buttercream',
+      },
+      es: {
+        'nav.schedule': 'Programa', 'nav.travel': 'Viaje', 'nav.ecuador': 'Ecuador', 'nav.rsvp': 'RSVP',
+        'hero.eyebrow': '17 · Octubre · 2026', 'hero.location': 'Cayambe · Ecuador',
+        'hero.cta': 'Confirmar asistencia', 'hero.scroll': 'Scroll',
+        'sched.eyebrow': '17 de Octubre de 2026', 'sched.eyebrow.sub': '17 · Octubre · 2026', 'sched.title': 'Programa & Confirmación',
+        'tab.wedding': 'Día de Boda', 'tab.prewed': 'Pre-Boda',
+        'timeline.title': 'Itinerario del Día',
+        'e1.time': '14:00', 'e1.title': 'Ceremonia', 'e1.desc': 'Ceremonia religiosa',
+        'e2.time': '15:30', 'e2.title': 'Recepción', 'e2.desc': 'Champán & Canapés al aire libre',
+        'e3.time': '18:00', 'e3.title': 'Cena', 'e3.desc': 'Cena festiva',
+        'e4.time': '20:00', 'e4.title': 'Fiesta', 'e4.desc': 'Música & Baile',
+        'prewed.title': 'Programa Pre-Boda',
+        'prewed.intro': 'Quienes lleguen antes están cordialmente invitados a participar en nuestras actividades previas.',
+        'pw1.day': 'Miércoles', 'pw1.date': '14 de octubre',
+        'pw1.title': 'Llegada & Cena de Bienvenida',
+        'pw1.desc': 'Llegada y registro. Por la noche los invitamos a una cena de bienvenida juntos.',
+        'pw2.day': 'Jueves', 'pw2.date': '15 de octubre',
+        'pw2.title': 'Quito & Otavalo',
+        'pw2.desc': 'Excursión al centro histórico de Quito (Patrimonio UNESCO) o al famoso mercado indígena de Otavalo.',
+        'pw3.day': 'Viernes', 'pw3.date': '16 de octubre',
+        'pw3.title': 'Ensayo & Cena',
+        'pw3.desc': 'Tarde de relax en la Hacienda. Por la noche ensayo y cena con la familia cercana.',
+        'rsvp.title': 'Confirmación', 'rsvp.note': 'Por favor responder antes del 30 de junio de 2026',
+        'form.name': 'Nombre *', 'form.name.ph': 'Nombre y apellido',
+        'form.companions.label': 'Acompañantes (pareja / hijos)',
+        'form.add': 'Agregar acompañante', 'form.guest.ph': 'Nombre del acompañante',
+        'form.attendance': 'Asistencia',
+        'form.yes': 'Sí', 'form.maybe': 'Tal vez', 'form.no': 'No',
+        'form.food': 'Menú', 'form.food.meat': '🥩 Carne', 'form.food.veg': '🥗 Vegetariano', 'form.food.vegan': '🌱 Vegano',
+        'form.babies': 'Bebés / Niños pequeños', 'form.babies.no': 'No', 'form.babies.yes': 'Sí, traemos un bebé / niño pequeño',
+        'form.message': 'Mensaje (opcional)', 'form.message.ph': 'Solicitudes especiales …',
+        'form.submit': 'Confirmar', 'form.sending': 'Enviando …',
+        'form.error': 'Error – por favor inténtalo de nuevo',
+        'form.success': '¡Muchas gracias!',
+        'form.success.sub': 'Esperamos celebrar juntos el 17 de octubre.',
+        'travel.eyebrow': 'Información Práctica', 'travel.title': 'Viaje & Alojamiento',
+        'travel.info.title': 'Cómo llegar',
+        'ti1.title': 'Aeropuerto de Quito (UIO)',
+        'ti1.desc': 'Aeropuerto Internacional Mariscal Sucre — aprox. 80 km de Cayambe. Vuelos directos desde Europa vía Madrid, Ámsterdam y Frankfurt.',
+        'ti2.title': 'Traslado a Cayambe',
+        'ti2.desc': 'Aprox. 1,5 h desde el aeropuerto en taxi o shuttle privado. Coordinación de traslado disponible bajo pedido.',
+        'ti3.title': 'Consejo',
+        'ti3.desc': 'Planea llegar 2–3 días antes y descubre Quito — su casco histórico colonial es Patrimonio de la Humanidad.',
+        'accomm.title': 'Alojamiento', 'ac1.badge': 'Recomendado',
+        'ac1.name': 'Hacienda Guachalá',
+        'ac1.desc': 'La hacienda más antigua de Ecuador, a las afueras de Cayambe. Ambiente colonial, jardines amplios y vistas al volcán.',
+        'ac1.dist': '→ 5 min del lugar de la boda',
+        'ecu.eyebrow': 'Nuestro País', 'ecu.title': 'Descubre Ecuador',
+        'ecu.intro': 'Ecuador reúne en un espacio pequeño volcanes nevados, selva tropical, el océano Pacífico y las únicas Islas Galápagos. Estamos encantados de compartir este país especial con vosotros.',
+        'ph1.title': 'Los Andes', 'ph1.sub': 'Volcanes & Páramo',
+        'ph2.title': 'Quito', 'ph2.sub': 'Patrimonio de la Humanidad',
+        'ph3.title': 'Galápagos', 'ph3.sub': 'Paraíso Natural',
+        'ph4.title': 'Baños', 'ph4.sub': 'Cascadas & Aventura',
+        'hl1.title': 'Cayambe — Ciudad en el Ecuador',
+        'hl1.desc': 'Cayambe está exactamente en la línea ecuatorial — el único punto del planeta donde un volcán nevado se encuentra justo en el meridiano cero.',
+        'hl2.title': 'Cultura & Tradición',
+        'hl2.desc': 'Ecuador es hogar de más de 14 grupos indígenas. Coloridos mercados, ceremonias precolombinas y artesanía viva definen su herencia cultural.',
+        'footer.info': '17 · 10 · 2026  ·  Cayambe, Ecuador',
+        'details.eyebrow': 'El Día', 'details.headline': 'La Información Más Importante',
+        'details.title': 'Un fin de semana entre los Andes, la naturaleza y mucho amor',
+        'details.text': 'Aquí encontraréis toda la información importante sobre nuestra boda en El Torreal, Cayambe — consejos de viaje, alojamiento e ideas para quienes quieran combinar el viaje con unas vacaciones.',
+        'tile.date.label': 'Fecha', 'tile.date.val': '17 de octubre de 2026',
+        'tile.venue.label': 'Lugar', 'tile.venue.val': 'El Torreal, Cayambe',
+        'tile.time.label': 'Hora', 'tile.time.val': '14:00 h',
+        'tile.dress.label': 'Código de vestimenta', 'tile.dress.val': 'Garden Party Formal',
+        'palette.eyebrow': 'Vestimenta', 'palette.title': 'Paleta de colores para vuestros outfits',
+        'palette.subtitle': 'Nos encantaría ver estos tonos cálidos y naturales',
+        'palette.note': 'Amamos a todas las personas. Si es posible, celebramos con estos colores:',
+        'sw.sage': 'Salvia', 'sw.apricot': 'Albaricoque', 'sw.coral': 'Coral', 'sw.blush': 'Rosa palo', 'sw.butter': 'Mantequilla',
+      }
+    };
+
+    let currentLang = 'de';
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      document.documentElement.lang = lang;
+
+      // Update text content
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (T[lang][key] !== undefined) el.textContent = T[lang][key];
+      });
+
+      // Update placeholders
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const key = el.getAttribute('data-i18n-placeholder');
+        if (T[lang][key] !== undefined) el.placeholder = T[lang][key];
+      });
+
+      // Update existing guest entry placeholders
+      document.querySelectorAll('.guest-entry input').forEach(inp => {
+        inp.placeholder = T[lang]['form.guest.ph'];
+      });
+
+      // Update lang buttons
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === lang);
+      });
+    }
+
+    /* ═══════════════════════════════════════════
+       STICKY NAV
+    ═══════════════════════════════════════════ */
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 72);
+    }, { passive: true });
+
+    /* ═══════════════════════════════════════════
+       HAMBURGER / MOBILE MENU
+    ═══════════════════════════════════════════ */
+    const burgerBtn   = document.getElementById('burgerBtn');
+    const mobileMenu  = document.getElementById('mobileMenu');
+
+    function closeMobileMenu() {
+      burgerBtn.classList.remove('is-open');
+      mobileMenu.classList.remove('is-open');
+      burgerBtn.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+
+    burgerBtn.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.toggle('is-open');
+      burgerBtn.classList.toggle('is-open', isOpen);
+      burgerBtn.setAttribute('aria-expanded', isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+
+    // Menü schließen wenn ein Link geklickt wird
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', closeMobileMenu);
+    });
+
+    /* ═══════════════════════════════════════════
+       LANGUAGE SWITCHER
+    ═══════════════════════════════════════════ */
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        setLanguage(btn.dataset.lang);
+        closeMobileMenu(); // Sprache wechseln schließt auch Menü
+      });
+    });
+
+    /* ═══════════════════════════════════════════
+       SCHEDULE TABS
+    ═══════════════════════════════════════════ */
+    document.querySelectorAll('.stab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const target = btn.dataset.tab;
+
+        document.querySelectorAll('.stab-btn').forEach(b => {
+          b.classList.toggle('active', b.dataset.tab === target);
+          b.setAttribute('aria-selected', b.dataset.tab === target);
+        });
+        document.querySelectorAll('.tab-pane').forEach(p => {
+          p.classList.toggle('active', p.id === 'tab-' + target);
+        });
+      });
+    });
+
+    /* ═══════════════════════════════════════════
+       DYNAMIC GUEST LIST
+    ═══════════════════════════════════════════ */
+    let guestCount = 0;
+
+    function createGuestEntry() {
+      guestCount++;
+      const entry = document.createElement('div');
+      entry.className = 'guest-entry';
+
+      const input = document.createElement('input');
+      input.type = 'text';
+      input.name = 'companion_' + guestCount;
+      input.placeholder = T[currentLang]['form.guest.ph'];
+      input.setAttribute('autocomplete', 'off');
+
+      const removeBtn = document.createElement('button');
+      removeBtn.type = 'button';
+      removeBtn.className = 'remove-btn';
+      removeBtn.setAttribute('aria-label', 'Entfernen');
+      removeBtn.textContent = '×';
+      removeBtn.addEventListener('click', () => {
+        entry.style.opacity = '0';
+        entry.style.transform = 'translateX(8px)';
+        entry.style.transition = 'opacity 0.2s, transform 0.2s';
+        setTimeout(() => entry.remove(), 200);
+      });
+
+      entry.style.opacity = '0';
+      entry.style.transform = 'translateY(6px)';
+      entry.appendChild(input);
+      entry.appendChild(removeBtn);
+      document.getElementById('guestList').appendChild(entry);
+
+      // animate in
+      requestAnimationFrame(() => {
+        entry.style.transition = 'opacity 0.25s, transform 0.25s';
+        entry.style.opacity = '1';
+        entry.style.transform = 'none';
+      });
+
+      input.focus();
+    }
+
+    document.getElementById('addGuestBtn').addEventListener('click', createGuestEntry);
+
+    /* ═══════════════════════════════════════════
+       RSVP FORM SUBMIT
+    ═══════════════════════════════════════════ */
+    // ── Google Sheets RSVP ──────────────────────────────────────
+    // Nach dem Einrichten (siehe google-apps-script.js) hier
+    // deine Web-App-URL eintragen:
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxdrnzDWLmjLlj6en6H85sCc3upoDTVuPlA-TREbmAtwBhIkwFLyzZOBPF5vu8pNGjEOw/exec';
+    // ────────────────────────────────────────────────────────────
+
+    const form = document.getElementById('rsvpForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const successMsg = document.getElementById('formSuccess');
+
+    if (form) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const nameVal = form.querySelector('#main-name').value.trim();
+        if (!nameVal) { form.querySelector('#main-name').focus(); return; }
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = T[currentLang]['form.sending'];
+
+        // Begleitungen sammeln (fix: name^=companion_ statt fehlende Klasse)
+        const guestInputs = form.querySelectorAll('input[name^="companion_"]');
+        const companions = Array.from(guestInputs)
+          .map(i => i.value.trim())
+          .filter(Boolean)
+          .join(', ');
+
+        // Anwesenheit
+        const attendance = (form.querySelector('input[name="attendance"]:checked') || {}).value || '';
+
+        // Menüwahl
+        const food = (form.querySelector('input[name="food"]:checked') || {}).value || '';
+
+        // Babys / Kleinkinder
+        const babies = (form.querySelector('input[name="babies"]:checked') || {}).value || '';
+
+        // Nachricht
+        const message = (form.querySelector('#message') || {}).value || '';
+
+        const payload = { name: nameVal, companions, attendance, food, babies, message };
+
+        try {
+          if (GOOGLE_SCRIPT_URL === 'DEINE_SCRIPT_URL_HIER_EINTRAGEN') {
+            throw new Error('URL nicht eingetragen');
+          }
+          await fetch(GOOGLE_SCRIPT_URL, {
+            method: 'POST',
+            mode: 'no-cors',          // nötig wegen Google CORS-Policy
+            body: JSON.stringify(payload)
+          });
+          // no-cors gibt keine lesbare Antwort – Erfolg annehmen
+          form.style.display = 'none';
+          successMsg.style.display = 'block';
+        } catch (err) {
+          submitBtn.disabled = false;
+          if (err.message === 'URL nicht eingetragen') {
+            submitBtn.textContent = '⚠ Script-URL fehlt!';
+          } else {
+            submitBtn.textContent = T[currentLang]['form.error'];
+          }
+          setTimeout(() => {
+            submitBtn.textContent = T[currentLang]['form.submit'];
+          }, 3500);
+        }
+      });
+    }
+
+    /* ═══════════════════════════════════════════
+       SCROLL REVEAL
+    ═══════════════════════════════════════════ */
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,7 @@
+.agents/
+.claude/
+skills-lock.json
+google-apps-script.js
+*.log
+Thumbs.db
+.DS_Store

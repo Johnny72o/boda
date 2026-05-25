@@ -1069,6 +1069,15 @@
       .accomm-card:hover { transform: none; }
     }
 
+    /* ── RSVP Section ──────────────────────────── */
+    .rsvp-section {
+      padding: 72px 0;
+      background: var(--parchment);
+    }
+    @media (max-width: 768px) {
+      .rsvp-section { padding: 52px 0; }
+    }
+
     /* ── Alpaka Hero ────────────────────────────── */
     .alpaca-hero {
       position: absolute;
@@ -1192,6 +1201,18 @@
       line-height: 1.3;
       text-align: center;
     }
+
+    .tile-map-link {
+      display: inline-block;
+      margin-top: 6px;
+      font-size: 0.62rem;
+      letter-spacing: 0.14em;
+      color: var(--terra);
+      text-decoration: none;
+      opacity: 0.85;
+      transition: opacity 0.2s;
+    }
+    .tile-map-link:hover { opacity: 1; text-decoration: underline; }
 
     /* Dresscode palette */
     .dresscode-palette {
@@ -1402,7 +1423,6 @@
     <div class="container">
 
       <header class="section-header reveal" style="margin-bottom: 32px;">
-        <p class="eyebrow" data-i18n="details.eyebrow">Der Tag</p>
         <h2 style="font-style: italic;" data-i18n="details.headline">Die wichtigsten Infos</h2>
         <div class="ornament" aria-hidden="true"><span class="diamond"></span></div>
       </header>
@@ -1420,13 +1440,16 @@
             <span class="tile-label" data-i18n="tile.venue.label">Ort</span>
             <div class="tile-divider"></div>
             <span class="tile-value" data-i18n="tile.venue.val">El Torreal, Cayambe</span>
+            <a href="https://maps.google.com/?q=Via+Cuniburo,+171001+Cayambe,+Ecuador"
+               target="_blank" rel="noopener noreferrer"
+               class="tile-map-link" data-i18n="tile.map">📍 Google Maps</a>
           </div>
         </div>
         <div class="detail-tile tile-3 reveal" style="transition-delay:.16s">
           <div class="tile-inner">
             <span class="tile-label" data-i18n="tile.time.label">Uhrzeit</span>
             <div class="tile-divider"></div>
-            <span class="tile-value" data-i18n="tile.time.val">14:00 Uhr</span>
+            <span class="tile-value" data-i18n="tile.time.val">11:00 Uhr</span>
           </div>
         </div>
         <div class="detail-tile tile-4 reveal" style="transition-delay:.24s">
@@ -1468,66 +1491,14 @@
   </section>
 
 
-  <!-- ── SCHEDULE & RSVP ─────────────────────── -->
-  <section id="schedule" class="schedule-section">
+  <!-- ── RSVP ─────────────────────────────────── -->
+  <section id="rsvp" class="rsvp-section">
     <div class="container">
       <header class="section-header reveal">
-        <h2 style="font-style: italic;" data-i18n="sched.title">Programm &amp; Anmeldung</h2>
+        <h2 style="font-style: italic;" data-i18n="rsvp.title">Anmeldung</h2>
         <div class="ornament" aria-hidden="true"><span class="diamond"></span></div>
       </header>
-
-      <!-- Tab switcher -->
-      <div class="schedule-tabs reveal" role="tablist">
-        <button class="stab-btn active" data-tab="wedding" role="tab" aria-selected="true" data-i18n="tab.wedding">Hochzeitstag</button>
-        <button class="stab-btn" data-tab="prewed" role="tab" aria-selected="false" data-i18n="tab.prewed">Vortage</button>
-      </div>
-
-      <!-- ── Tab: Wedding Day ── -->
-      <div class="tab-pane active" id="tab-wedding" role="tabpanel">
-        <div class="schedule-grid">
-
-          <!-- Timeline -->
-          <div class="card reveal">
-            <h3 class="card-title" data-i18n="timeline.title">Tagesablauf</h3>
-            <div class="timeline" role="list">
-              <div class="timeline-item" role="listitem">
-                <span class="t-time" data-i18n="e1.time">14:00</span>
-                <div class="t-dot" aria-hidden="true"></div>
-                <div class="t-body">
-                  <h4 data-i18n="e1.title">Trauung</h4>
-                  <p data-i18n="e1.desc">Kirchliche Zeremonie</p>
-                </div>
-              </div>
-              <div class="timeline-item" role="listitem">
-                <span class="t-time" data-i18n="e2.time">15:30</span>
-                <div class="t-dot" aria-hidden="true"></div>
-                <div class="t-body">
-                  <h4 data-i18n="e2.title">Empfang</h4>
-                  <p data-i18n="e2.desc">Sekt &amp; Canapés im Freien</p>
-                </div>
-              </div>
-              <div class="timeline-item" role="listitem">
-                <span class="t-time" data-i18n="e3.time">18:00</span>
-                <div class="t-dot" aria-hidden="true"></div>
-                <div class="t-body">
-                  <h4 data-i18n="e3.title">Abendessen</h4>
-                  <p data-i18n="e3.desc">Festliches Dinner</p>
-                </div>
-              </div>
-              <div class="timeline-item" role="listitem">
-                <span class="t-time" data-i18n="e4.time">20:00</span>
-                <div class="t-dot" aria-hidden="true"></div>
-                <div class="t-body">
-                  <h4 data-i18n="e4.title">Party</h4>
-                  <p data-i18n="e4.desc">Musik &amp; Tanzen</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- RSVP -->
-          <div class="card rsvp-card reveal" id="rsvp">
-            <h3 class="card-title" data-i18n="rsvp.title">Anmeldung</h3>
+      <div class="card rsvp-card reveal" style="max-width:580px;margin:0 auto;" id="rsvp-card">
             <p class="rsvp-note" data-i18n="rsvp.note">Bitte bis 30. Juni 2026 antworten</p>
 
             <form id="rsvpForm" novalidate>
@@ -1600,7 +1571,7 @@
                   </div>
                   <div class="attend-opt">
                     <input type="radio" name="babies" id="babies-yes" value="Ja">
-                    <label for="babies-yes" data-i18n="form.babies.yes">Ja, wir bringen ein Baby / Kleinkind mit</label>
+                    <label for="babies-yes" data-i18n="form.babies.yes">Ja</label>
                   </div>
                 </div>
               </div>
@@ -1622,62 +1593,114 @@
               <p data-i18n="form.success">Vielen Dank!</p>
               <small data-i18n="form.success.sub">Wir freuen uns auf euch — bis zum 17. Oktober.</small>
             </div>
-          </div>
+      </div><!-- /rsvp-card -->
+    </div><!-- /container -->
+  </section><!-- /rsvp-section -->
 
+  <!-- ── PROGRAMM ───────────────────────────────── -->
+  <section id="schedule" class="schedule-section">
+    <div class="container">
+      <header class="section-header reveal">
+        <h2 style="font-style: italic;" data-i18n="sched.title">Programm</h2>
+        <div class="ornament" aria-hidden="true"><span class="diamond"></span></div>
+      </header>
+
+      <div class="schedule-tabs reveal" role="tablist">
+        <button class="stab-btn active" data-tab="wedding" role="tab" aria-selected="true" data-i18n="tab.wedding">Hochzeitstag</button>
+        <button class="stab-btn" data-tab="prewed" role="tab" aria-selected="false" data-i18n="tab.prewed">Wochenende</button>
+      </div>
+
+      <!-- ── Tab: Hochzeitstag ── -->
+      <div class="tab-pane active" id="tab-wedding" role="tabpanel">
+        <div style="max-width:640px;margin:0 auto;">
+          <div class="card reveal">
+            <h3 class="card-title" data-i18n="timeline.title">Tagesablauf</h3>
+            <div class="timeline" role="list">
+              <div class="timeline-item" role="listitem">
+                <span class="t-time" data-i18n="e1.time">11:00</span>
+                <div class="t-dot" aria-hidden="true"></div>
+                <div class="t-body">
+                  <h4 data-i18n="e1.title">Trauung</h4>
+                  <p data-i18n="e1.desc">Kirchliche Zeremonie</p>
+                </div>
+              </div>
+              <div class="timeline-item" role="listitem">
+                <span class="t-time" data-i18n="e2.time">12:30</span>
+                <div class="t-dot" aria-hidden="true"></div>
+                <div class="t-body">
+                  <h4 data-i18n="e2.title">Empfang</h4>
+                  <p data-i18n="e2.desc">Sekt &amp; Canapés im Freien</p>
+                </div>
+              </div>
+              <div class="timeline-item" role="listitem">
+                <span class="t-time" data-i18n="e3.time">15:00</span>
+                <div class="t-dot" aria-hidden="true"></div>
+                <div class="t-body">
+                  <h4 data-i18n="e3.title">Abendessen</h4>
+                  <p data-i18n="e3.desc">Festliches Dinner</p>
+                </div>
+              </div>
+              <div class="timeline-item" role="listitem">
+                <span class="t-time" data-i18n="e4.time">17:00</span>
+                <div class="t-dot" aria-hidden="true"></div>
+                <div class="t-body">
+                  <h4 data-i18n="e4.title">Party</h4>
+                  <p data-i18n="e4.desc">Musik &amp; Tanzen</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div><!-- /tab-wedding -->
 
       <!-- ── Tab: Pre-Wedding ── -->
       <div class="tab-pane" id="tab-prewed" role="tabpanel">
-        <div class="schedule-grid">
-
-          <div class="card reveal" style="grid-column: 1 / -1; max-width: 640px; margin: 0 auto; width: 100%;">
-            <h3 class="card-title" data-i18n="prewed.title">Pre-Wedding Programm</h3>
-            <p class="prewed-intro-text" data-i18n="prewed.intro">Wer früher anreist, ist herzlich eingeladen an unseren Aktivitäten teilzunehmen.</p>
+        <div style="max-width:640px;margin:0 auto;">
+          <div class="card reveal">
+            <h3 class="card-title" data-i18n="prewed.title">Programm</h3>
 
             <div class="prewed-days">
 
               <div class="prewed-day">
                 <div class="prewed-day-label">
-                  <span class="prewed-weekday" data-i18n="pw1.day">Mittwoch</span>
-                  <span class="prewed-date" data-i18n="pw1.date">14. Oktober</span>
+                  <span class="prewed-weekday" data-i18n="pw1.day">Freitag</span>
+                  <span class="prewed-date" data-i18n="pw1.date">16. Oktober</span>
                 </div>
                 <div class="prewed-day-body">
-                  <h4 data-i18n="pw1.title">Ankunft &amp; Willkommensabend</h4>
-                  <p data-i18n="pw1.desc">Anreise und Einchecken. Am Abend laden wir herzlich zu einem gemeinsamen Willkommensessen ein.</p>
+                  <h4 data-i18n="pw1.title">Ausflug in die Altstadt</h4>
+                  <p data-i18n="pw1.desc"></p>
                 </div>
               </div>
 
               <div class="prewed-day">
                 <div class="prewed-day-label">
-                  <span class="prewed-weekday" data-i18n="pw2.day">Donnerstag</span>
-                  <span class="prewed-date" data-i18n="pw2.date">15. Oktober</span>
+                  <span class="prewed-weekday" data-i18n="pw2.day">Samstag</span>
+                  <span class="prewed-date" data-i18n="pw2.date">17. Oktober</span>
                 </div>
                 <div class="prewed-day-body">
-                  <h4 data-i18n="pw2.title">Quito &amp; Otavalo</h4>
-                  <p data-i18n="pw2.desc">Ausflug in die UNESCO-Altstadt von Quito oder zum berühmten Indigenenmarkt in Otavalo.</p>
+                  <h4 data-i18n="pw2.title">Hochzeit 🎊</h4>
+                  <p data-i18n="pw2.desc"></p>
                 </div>
               </div>
 
               <div class="prewed-day">
                 <div class="prewed-day-label">
-                  <span class="prewed-weekday" data-i18n="pw3.day">Freitag</span>
-                  <span class="prewed-date" data-i18n="pw3.date">16. Oktober</span>
+                  <span class="prewed-weekday" data-i18n="pw3.day">Sonntag</span>
+                  <span class="prewed-date" data-i18n="pw3.date">18. Oktober</span>
                 </div>
                 <div class="prewed-day-body">
-                  <h4 data-i18n="pw3.title">Rehearsal &amp; Abendessen</h4>
-                  <p data-i18n="pw3.desc">Entspannung auf der Hacienda. Am Abend Probeabend und Dinner mit der engsten Familie.</p>
+                  <h4 data-i18n="pw3.title">Chilling with friends</h4>
+                  <p data-i18n="pw3.desc">Cayambe</p>
                 </div>
               </div>
 
             </div>
           </div>
-
         </div>
       </div><!-- /tab-prewed -->
 
     </div>
-  </section>
+  </section><!-- /schedule -->
 
   <!-- ── TRAVEL & ACCOMMODATION ──────────────── -->
   <section id="travel" class="travel-section">
@@ -1758,7 +1781,7 @@
       </header>
 
       <div class="ecuador-intro reveal">
-        <p data-i18n="ecu.intro">Ecuador vereint auf kleinstem Raum schneebedeckte Vulkane, tropischen Regenwald, den Pazifik und die einzigartigen Galápagos-Inseln. Wir freuen uns, dieses besondere Land mit euch zu teilen.</p>
+        <p data-i18n="ecu.intro">Ecuador hat viele schöne Seiten. Wenn ihr Fragen habt zu eurer Reise, dann schreibt uns gerne eine Nachricht.</p>
       </div>
 
       <div class="photo-grid">
@@ -1792,7 +1815,8 @@
         </div>
       </div>
 
-      <div class="highlights-grid">
+      <!-- highlights entfernt (Cayambe & Kultur) -->
+      <div style="display:none"><div class="highlights-grid">
         <div class="highlight reveal">
           <h4 data-i18n="hl1.title">Cayambe — Stadt am Äquator</h4>
           <p data-i18n="hl1.desc">Cayambe liegt genau auf dem Äquator — der einzige Punkt der Erde, an dem ein schneebedeckter Vulkan direkt am Nullmeridian steht.</p>
@@ -1842,7 +1866,7 @@
           <h4 data-i18n="hl2.title">Kultur &amp; Tradition</h4>
           <p data-i18n="hl2.desc">Ecuador ist Heimat von über 14 indigenen Gruppen. Farbenfrohe Märkte, vorspanische Zeremonien und lebendiges Kunsthandwerk prägen das kulturelle Erbe.</p>
         </div>
-      </div>
+      </div></div><!-- /highlights hidden -->
 
     </div>
   </section>
@@ -1859,40 +1883,40 @@
     ═══════════════════════════════════════════ */
     const T = {
       de: {
-        'nav.schedule': 'Programm', 'nav.travel': 'Anreise', 'nav.ecuador': 'Ecuador', 'nav.rsvp': 'RSVP',
+        'nav.schedule': 'Programm', 'nav.travel': 'Anreise / Unterkunft', 'nav.ecuador': 'Ecuador', 'nav.rsvp': 'RSVP',
         'hero.eyebrow': '17 · Oktober · 2026', 'hero.location': 'Cayambe · Ecuador',
         'hero.cta': 'Zusagen', 'hero.scroll': 'Scroll',
-        'sched.eyebrow': '17. Oktober 2026', 'sched.eyebrow.sub': '17 · Oktober · 2026', 'sched.title': 'Programm & Anmeldung',
-        'tab.wedding': 'Hochzeitstag', 'tab.prewed': 'Vortage',
+        'sched.eyebrow': '17. Oktober 2026', 'sched.eyebrow.sub': '17 · Oktober · 2026', 'sched.title': 'Programm',
+        'tab.wedding': 'Hochzeitstag', 'tab.prewed': 'Wochenende',
         'timeline.title': 'Tagesablauf',
-        'e1.time': '14:00', 'e1.title': 'Trauung', 'e1.desc': 'Kirchliche Zeremonie',
-        'e2.time': '15:30', 'e2.title': 'Empfang', 'e2.desc': 'Sekt & Canapés im Freien',
-        'e3.time': '18:00', 'e3.title': 'Abendessen', 'e3.desc': 'Festliches Dinner',
-        'e4.time': '20:00', 'e4.title': 'Party', 'e4.desc': 'Musik & Tanzen',
+        'e1.time': '11:00', 'e1.title': 'Trauung', 'e1.desc': 'Kirchliche Zeremonie',
+        'e2.time': '12:30', 'e2.title': 'Empfang', 'e2.desc': 'Sekt & Canapés im Freien',
+        'e3.time': '15:00', 'e3.title': 'Abendessen', 'e3.desc': 'Festliches Dinner',
+        'e4.time': '17:00', 'e4.title': 'Party', 'e4.desc': 'Musik & Tanzen',
         'prewed.title': 'Pre-Wedding Programm',
         'prewed.intro': 'Wer früher anreist, ist herzlich eingeladen an unseren Aktivitäten teilzunehmen.',
-        'pw1.day': 'Mittwoch', 'pw1.date': '14. Oktober',
-        'pw1.title': 'Ankunft & Willkommensabend',
-        'pw1.desc': 'Anreise und Einchecken. Am Abend laden wir herzlich zu einem gemeinsamen Willkommensessen ein.',
-        'pw2.day': 'Donnerstag', 'pw2.date': '15. Oktober',
-        'pw2.title': 'Quito & Otavalo',
-        'pw2.desc': 'Ausflug in die UNESCO-Altstadt von Quito oder zum berühmten Indigenenmarkt in Otavalo.',
-        'pw3.day': 'Freitag', 'pw3.date': '16. Oktober',
-        'pw3.title': 'Rehearsal & Abendessen',
-        'pw3.desc': 'Entspannung auf der Hacienda. Am Abend Probeabend und Dinner mit der engsten Familie.',
-        'rsvp.title': 'Anmeldung', 'rsvp.note': 'Bitte bis 30. Juni 2026 antworten',
+        'pw1.day': 'Freitag', 'pw1.date': '16. Oktober',
+        'pw1.title': 'Ausflug in die Altstadt',
+        'pw1.desc': '',
+        'pw2.day': 'Samstag', 'pw2.date': '17. Oktober',
+        'pw2.title': 'Hochzeit 🎊',
+        'pw2.desc': '',
+        'pw3.day': 'Sonntag', 'pw3.date': '18. Oktober',
+        'pw3.title': 'Chilling with friends',
+        'pw3.desc': 'Cayambe',
+        'rsvp.title': 'Anmeldung', 'rsvp.note': 'Bitte gebt uns bis zum 30.06.2026 Bescheid, ob eine Anreise für euch realistisch ist.',
         'form.name': 'Name *', 'form.name.ph': 'Vor- und Nachname',
         'form.companions.label': 'Begleitung (Partner / Kinder)',
         'form.add': 'Begleitung hinzufügen', 'form.guest.ph': 'Name der Begleitung',
         'form.attendance': 'Anwesenheit',
         'form.yes': 'Ja', 'form.maybe': 'Vielleicht', 'form.no': 'Nein',
         'form.food': 'Menüwahl', 'form.food.meat': '🥩 Fleisch', 'form.food.veg': '🥗 Vegetarisch', 'form.food.vegan': '🌱 Vegan',
-        'form.babies': 'Kleinkinder / Babys', 'form.babies.no': 'Nein', 'form.babies.yes': 'Ja, wir bringen ein Baby / Kleinkind mit',
+        'form.babies': 'Kleinkinder / Babys', 'form.babies.no': 'Nein', 'form.babies.yes': 'Ja',
         'form.message': 'Nachricht (optional)', 'form.message.ph': 'Besondere Wünsche …',
         'form.submit': 'Anmelden', 'form.sending': 'Wird gesendet …',
         'form.error': 'Fehler – bitte erneut versuchen',
         'form.success': 'Vielen Dank!',
-        'form.success.sub': 'Wir freuen uns auf euch — bis zum 17. Oktober.',
+        'form.success.sub': 'Wir freuen uns auf euch! ♡',
         'travel.eyebrow': 'Praktisches', 'travel.title': 'Anreise & Unterkunft',
         'travel.info.title': 'Anreise',
         'ti1.title': 'Flughafen Quito (UIO)',
@@ -1906,7 +1930,7 @@
         'ac1.desc': 'Die älteste Hacienda Ecuadors, direkt bei Cayambe. Koloniales Ambiente, weitläufige Gärten und Blick auf den Vulkan.',
         'ac1.dist': '→ 5 min zum Veranstaltungsort',
         'ecu.eyebrow': 'Unser Land', 'ecu.title': 'Ecuador entdecken',
-        'ecu.intro': 'Ecuador vereint auf kleinstem Raum schneebedeckte Vulkane, tropischen Regenwald, den Pazifik und die einzigartigen Galápagos-Inseln. Wir freuen uns, dieses besondere Land mit euch zu teilen.',
+        'ecu.intro': 'Ecuador hat viele schöne Seiten. Wenn ihr Fragen habt zu eurer Reise, dann schreibt uns gerne eine Nachricht.',
         'ph1.title': 'Los Andes', 'ph1.sub': 'Vulkane & Páramo',
         'ph2.title': 'Quito', 'ph2.sub': 'UNESCO-Weltkulturerbe',
         'ph3.title': 'Galápagos', 'ph3.sub': 'Naturparadies im Pazifik',
@@ -1921,7 +1945,8 @@
         'details.text': 'Auf dieser Seite findet ihr alle wichtigen Informationen zu unserer Hochzeit in El Torreal, Cayambe — Hinweise zur Anreise, Unterkunft und ein paar Ideen für alle, die den Trip mit Urlaub verbinden möchten.',
         'tile.date.label': 'Datum', 'tile.date.val': '17. Oktober 2026',
         'tile.venue.label': 'Ort', 'tile.venue.val': 'El Torreal, Cayambe',
-        'tile.time.label': 'Uhrzeit', 'tile.time.val': '14:00 Uhr',
+        'tile.time.label': 'Uhrzeit', 'tile.time.val': '11:00 Uhr',
+        'tile.map': '📍 Google Maps',
         'tile.dress.label': 'Dresscode', 'tile.dress.val': 'Garden Party Formal',
         'palette.eyebrow': 'Dresscode', 'palette.title': 'Farbpalette für eure Outfits',
         'palette.subtitle': 'Wir freuen uns über Outfits in diesen warmen, natürlichen Tönen',
@@ -1929,11 +1954,11 @@
         'sw.sage': 'Sage', 'sw.apricot': 'Apricot', 'sw.coral': 'Coral', 'sw.blush': 'Blush', 'sw.butter': 'Buttercream',
       },
       en: {
-        'nav.schedule': 'Schedule', 'nav.travel': 'Travel', 'nav.ecuador': 'Ecuador', 'nav.rsvp': 'RSVP',
+        'nav.schedule': 'Schedule', 'nav.travel': 'Travel & Accommodation', 'nav.ecuador': 'Ecuador', 'nav.rsvp': 'RSVP',
         'hero.eyebrow': '17 · October · 2026', 'hero.location': 'Cayambe · Ecuador',
         'hero.cta': 'RSVP', 'hero.scroll': 'Scroll',
-        'sched.eyebrow': 'October 17, 2026', 'sched.eyebrow.sub': '17 · October · 2026', 'sched.title': 'Schedule & RSVP',
-        'tab.wedding': 'Wedding Day', 'tab.prewed': 'Pre-Wedding',
+        'sched.eyebrow': 'October 17, 2026', 'sched.eyebrow.sub': '17 · October · 2026', 'sched.title': 'Schedule',
+        'tab.wedding': 'Wedding Day', 'tab.prewed': 'Weekend',
         'timeline.title': 'Day Schedule',
         'e1.time': '14:00', 'e1.title': 'Ceremony', 'e1.desc': 'Church Ceremony',
         'e2.time': '15:30', 'e2.title': 'Reception', 'e2.desc': 'Champagne & Canapés',
@@ -1941,28 +1966,28 @@
         'e4.time': '20:00', 'e4.title': 'Party', 'e4.desc': 'Music & Dancing',
         'prewed.title': 'Pre-Wedding Program',
         'prewed.intro': 'Those arriving early are warmly invited to join our pre-wedding activities.',
-        'pw1.day': 'Wednesday', 'pw1.date': 'October 14',
-        'pw1.title': 'Arrival & Welcome Dinner',
-        'pw1.desc': 'Arrival and check-in. In the evening we invite everyone to a welcome dinner together.',
-        'pw2.day': 'Thursday', 'pw2.date': 'October 15',
-        'pw2.title': 'Quito & Otavalo',
-        'pw2.desc': 'Excursion to Quito\'s UNESCO historic center or the famous indigenous market in Otavalo.',
-        'pw3.day': 'Friday', 'pw3.date': 'October 16',
-        'pw3.title': 'Rehearsal & Dinner',
-        'pw3.desc': 'Relaxing afternoon at the Hacienda. Evening rehearsal and dinner with close family.',
-        'rsvp.title': 'RSVP', 'rsvp.note': 'Please reply by June 30, 2026',
+        'pw1.day': 'Friday', 'pw1.date': 'October 16',
+        'pw1.title': 'Trip to the Old Town',
+        'pw1.desc': '',
+        'pw2.day': 'Saturday', 'pw2.date': 'October 17',
+        'pw2.title': 'Wedding 🎊',
+        'pw2.desc': '',
+        'pw3.day': 'Sunday', 'pw3.date': 'October 18',
+        'pw3.title': 'Chilling with friends',
+        'pw3.desc': 'Cayambe',
+        'rsvp.title': 'RSVP', 'rsvp.note': 'Please let us know by June 30, 2026 whether travelling to Ecuador is realistic for you.',
         'form.name': 'Name *', 'form.name.ph': 'First and last name',
         'form.companions.label': 'Companions (partner / children)',
         'form.add': 'Add companion', 'form.guest.ph': 'Companion\'s name',
         'form.attendance': 'Attendance',
         'form.yes': 'Yes', 'form.maybe': 'Maybe', 'form.no': 'No',
         'form.food': 'Menu choice', 'form.food.meat': '🥩 Meat', 'form.food.veg': '🥗 Vegetarian', 'form.food.vegan': '🌱 Vegan',
-        'form.babies': 'Infants / Babies', 'form.babies.no': 'No', 'form.babies.yes': 'Yes, we are bringing a baby / toddler',
+        'form.babies': 'Infants / Babies', 'form.babies.no': 'No', 'form.babies.yes': 'Yes',
         'form.message': 'Message (optional)', 'form.message.ph': 'Special requests …',
         'form.submit': 'Submit RSVP', 'form.sending': 'Sending …',
         'form.error': 'Error – please try again',
         'form.success': 'Thank you!',
-        'form.success.sub': 'We look forward to celebrating with you on October 17.',
+        'form.success.sub': 'We can\'t wait to celebrate with you! ♡',
         'travel.eyebrow': 'Practical Info', 'travel.title': 'Travel & Accommodation',
         'travel.info.title': 'Getting There',
         'ti1.title': 'Quito Airport (UIO)',
@@ -1976,7 +2001,7 @@
         'ac1.desc': 'Ecuador\'s oldest hacienda, just outside Cayambe. Colonial charm, sweeping gardens and views of the volcano.',
         'ac1.dist': '→ 5 min from the venue',
         'ecu.eyebrow': 'Our Country', 'ecu.title': 'Discover Ecuador',
-        'ecu.intro': 'Ecuador packs snow-capped volcanoes, tropical rainforest, the Pacific coast and the unique Galápagos Islands into a remarkably small country. We can\'t wait to share it with you.',
+        'ecu.intro': 'Ecuador has many beautiful sides. If you have any questions about your trip, feel free to send us a message.',
         'ph1.title': 'Los Andes', 'ph1.sub': 'Volcanoes & Páramo',
         'ph2.title': 'Quito', 'ph2.sub': 'UNESCO World Heritage',
         'ph3.title': 'Galápagos', 'ph3.sub': 'Natural Paradise',
@@ -1991,7 +2016,8 @@
         'details.text': 'Here you\'ll find all the important information about our wedding at El Torreal, Cayambe — travel tips, accommodation and ideas for those who want to combine the trip with a holiday.',
         'tile.date.label': 'Date', 'tile.date.val': 'October 17, 2026',
         'tile.venue.label': 'Venue', 'tile.venue.val': 'El Torreal, Cayambe',
-        'tile.time.label': 'Time', 'tile.time.val': '2:00 pm',
+        'tile.time.label': 'Time', 'tile.time.val': '11:00 am',
+        'tile.map': '📍 Google Maps',
         'tile.dress.label': 'Dress Code', 'tile.dress.val': 'Garden Party Formal',
         'palette.eyebrow': 'Dress Code', 'palette.title': 'Color Palette for Your Outfits',
         'palette.subtitle': 'We\'d love to see warm, natural tones like these',
@@ -1999,11 +2025,11 @@
         'sw.sage': 'Sage', 'sw.apricot': 'Apricot', 'sw.coral': 'Coral', 'sw.blush': 'Blush', 'sw.butter': 'Buttercream',
       },
       es: {
-        'nav.schedule': 'Programa', 'nav.travel': 'Viaje', 'nav.ecuador': 'Ecuador', 'nav.rsvp': 'RSVP',
+        'nav.schedule': 'Programa', 'nav.travel': 'Viaje & Alojamiento', 'nav.ecuador': 'Ecuador', 'nav.rsvp': 'RSVP',
         'hero.eyebrow': '17 · Octubre · 2026', 'hero.location': 'Cayambe · Ecuador',
         'hero.cta': 'Confirmar asistencia', 'hero.scroll': 'Scroll',
-        'sched.eyebrow': '17 de Octubre de 2026', 'sched.eyebrow.sub': '17 · Octubre · 2026', 'sched.title': 'Programa & Confirmación',
-        'tab.wedding': 'Día de Boda', 'tab.prewed': 'Pre-Boda',
+        'sched.eyebrow': '17 de Octubre de 2026', 'sched.eyebrow.sub': '17 · Octubre · 2026', 'sched.title': 'Programa',
+        'tab.wedding': 'Día de Boda', 'tab.prewed': 'Fin de semana',
         'timeline.title': 'Itinerario del Día',
         'e1.time': '14:00', 'e1.title': 'Ceremonia', 'e1.desc': 'Ceremonia religiosa',
         'e2.time': '15:30', 'e2.title': 'Recepción', 'e2.desc': 'Champán & Canapés al aire libre',
@@ -2011,28 +2037,28 @@
         'e4.time': '20:00', 'e4.title': 'Fiesta', 'e4.desc': 'Música & Baile',
         'prewed.title': 'Programa Pre-Boda',
         'prewed.intro': 'Quienes lleguen antes están cordialmente invitados a participar en nuestras actividades previas.',
-        'pw1.day': 'Miércoles', 'pw1.date': '14 de octubre',
-        'pw1.title': 'Llegada & Cena de Bienvenida',
-        'pw1.desc': 'Llegada y registro. Por la noche los invitamos a una cena de bienvenida juntos.',
-        'pw2.day': 'Jueves', 'pw2.date': '15 de octubre',
-        'pw2.title': 'Quito & Otavalo',
-        'pw2.desc': 'Excursión al centro histórico de Quito (Patrimonio UNESCO) o al famoso mercado indígena de Otavalo.',
-        'pw3.day': 'Viernes', 'pw3.date': '16 de octubre',
-        'pw3.title': 'Ensayo & Cena',
-        'pw3.desc': 'Tarde de relax en la Hacienda. Por la noche ensayo y cena con la familia cercana.',
-        'rsvp.title': 'Confirmación', 'rsvp.note': 'Por favor responder antes del 30 de junio de 2026',
+        'pw1.day': 'Viernes', 'pw1.date': '16 de octubre',
+        'pw1.title': 'Excursión al centro histórico',
+        'pw1.desc': '',
+        'pw2.day': 'Sábado', 'pw2.date': '17 de octubre',
+        'pw2.title': 'Boda 🎊',
+        'pw2.desc': '',
+        'pw3.day': 'Domingo', 'pw3.date': '18 de octubre',
+        'pw3.title': 'Chilling with friends',
+        'pw3.desc': 'Cayambe',
+        'rsvp.title': 'Confirmación', 'rsvp.note': 'Por favor, dinos antes del 30.06.2026 si un viaje a Ecuador es realista para vosotros.',
         'form.name': 'Nombre *', 'form.name.ph': 'Nombre y apellido',
         'form.companions.label': 'Acompañantes (pareja / hijos)',
         'form.add': 'Agregar acompañante', 'form.guest.ph': 'Nombre del acompañante',
         'form.attendance': 'Asistencia',
         'form.yes': 'Sí', 'form.maybe': 'Tal vez', 'form.no': 'No',
         'form.food': 'Menú', 'form.food.meat': '🥩 Carne', 'form.food.veg': '🥗 Vegetariano', 'form.food.vegan': '🌱 Vegano',
-        'form.babies': 'Bebés / Niños pequeños', 'form.babies.no': 'No', 'form.babies.yes': 'Sí, traemos un bebé / niño pequeño',
+        'form.babies': 'Bebés / Niños pequeños', 'form.babies.no': 'No', 'form.babies.yes': 'Sí',
         'form.message': 'Mensaje (opcional)', 'form.message.ph': 'Solicitudes especiales …',
         'form.submit': 'Confirmar', 'form.sending': 'Enviando …',
         'form.error': 'Error – por favor inténtalo de nuevo',
         'form.success': '¡Muchas gracias!',
-        'form.success.sub': 'Esperamos celebrar juntos el 17 de octubre.',
+        'form.success.sub': '¡Estamos deseando celebrar con vosotros! ♡',
         'travel.eyebrow': 'Información Práctica', 'travel.title': 'Viaje & Alojamiento',
         'travel.info.title': 'Cómo llegar',
         'ti1.title': 'Aeropuerto de Quito (UIO)',
@@ -2046,7 +2072,7 @@
         'ac1.desc': 'La hacienda más antigua de Ecuador, a las afueras de Cayambe. Ambiente colonial, jardines amplios y vistas al volcán.',
         'ac1.dist': '→ 5 min del lugar de la boda',
         'ecu.eyebrow': 'Nuestro País', 'ecu.title': 'Descubre Ecuador',
-        'ecu.intro': 'Ecuador reúne en un espacio pequeño volcanes nevados, selva tropical, el océano Pacífico y las únicas Islas Galápagos. Estamos encantados de compartir este país especial con vosotros.',
+        'ecu.intro': 'Ecuador tiene muchos lugares hermosos. Si tenéis preguntas sobre vuestro viaje, no dudéis en escribirnos.',
         'ph1.title': 'Los Andes', 'ph1.sub': 'Volcanes & Páramo',
         'ph2.title': 'Quito', 'ph2.sub': 'Patrimonio de la Humanidad',
         'ph3.title': 'Galápagos', 'ph3.sub': 'Paraíso Natural',
@@ -2061,7 +2087,8 @@
         'details.text': 'Aquí encontraréis toda la información importante sobre nuestra boda en El Torreal, Cayambe — consejos de viaje, alojamiento e ideas para quienes quieran combinar el viaje con unas vacaciones.',
         'tile.date.label': 'Fecha', 'tile.date.val': '17 de octubre de 2026',
         'tile.venue.label': 'Lugar', 'tile.venue.val': 'El Torreal, Cayambe',
-        'tile.time.label': 'Hora', 'tile.time.val': '14:00 h',
+        'tile.time.label': 'Hora', 'tile.time.val': '11:00 h',
+        'tile.map': '📍 Google Maps',
         'tile.dress.label': 'Código de vestimenta', 'tile.dress.val': 'Garden Party Formal',
         'palette.eyebrow': 'Vestimenta', 'palette.title': 'Paleta de colores para vuestros outfits',
         'palette.subtitle': 'Nos encantaría ver estos tonos cálidos y naturales',
